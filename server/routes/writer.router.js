@@ -8,9 +8,9 @@ const {
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   // GET route code here
-  const query = `SELECT * FROM writer`; //i'll need a WHERE in here to match writer ID to user eventually
+  const query = `SELECT * FROM writer WHERE user_id = ${req.params.id}`; //i'll need a WHERE in here to match writer ID to user eventually
   pool.query(query)
       .then( result => {
         res.send(result.rows);

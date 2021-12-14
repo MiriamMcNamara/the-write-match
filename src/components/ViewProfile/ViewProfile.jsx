@@ -9,11 +9,14 @@ function ViewProfile(props) {
   const dispatch = useDispatch();
 
   useEffect( ()=>{
-    dispatch( { type: 'FETCH_WRITER' } );
+    dispatch( { type: 'FETCH_WRITER',
+                payload: user.id
+  } );
   }, []);
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const writer = useSelector((store) => store.writer);
+  const user = useSelector(( store) => store.user );
   const [heading, setHeading] = useState('View Profile');
 
   return (

@@ -2,10 +2,10 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
-function* fetchWriter() {
+function* fetchWriter( action ) {
   try {
     
-    const response = yield axios.get('/api/writer');
+    const response = yield axios.get(`/api/writer/${action.payload}`);
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let

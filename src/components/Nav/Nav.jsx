@@ -36,6 +36,10 @@ function Nav() {
               View Profile
             </Link>
 
+            <Link className="navLink" to="/createprofile">
+              Create Profile
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

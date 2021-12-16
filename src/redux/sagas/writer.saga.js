@@ -16,8 +16,22 @@ function* fetchWriter( action ) {
   }
 }
 
+function* postWriter( action ) {
+  console.log( '--------> in postWriter', action.payload );
+  try {
+      const response = yield axios.post('/api/writer', action.payload);
+      console.log( 'adding writer: ', response.data );
+      yield put( { type: 'FETCH_WRITER', payload: response.data } );
+      alert( 'writer saved!' );
+  } catch( err ){
+      alert( 'no' );
+      console.log( err );
+    }
+}
+
 function* writerSaga() {
   yield takeLatest('FETCH_WRITER', fetchWriter);
+  yield takeLatest('POST_WRITER', postWriter);
 }
 
 export default writerSaga;

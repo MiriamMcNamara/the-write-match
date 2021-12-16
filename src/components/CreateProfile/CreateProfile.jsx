@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -7,8 +8,10 @@ import {useSelector} from 'react-redux';
 function CreateProfile(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
+  const dispatch = useDispatch();
   const store = useSelector((store) => store);
   const user = useSelector(( store) => store.user );
+  const history = useHistory();
   const [heading, setHeading] = useState('Create Profile');
 
   const[ addWriter, setAddWriter ]=useState( {
@@ -19,16 +22,18 @@ function CreateProfile(props) {
     genre: 0,
     skill: 0,
     seeking: 0,
-    contact: ''
+    contact: '',
+    user_id: user.id
 } );
 
 const postWriter = ()=>{
   console.log( 'in postWriter' );
   console.log( addWriter );
-  // dispatch({
-  //     type: 'POST_WRITER',
-  //     payload: addWriter
-  // });
+  dispatch({
+      type: 'POST_WRITER',
+      payload: addWriter
+  });
+  history.push( '/profile' );
 }
 
 const handleName = (event )=>{ //input capture

@@ -22,7 +22,6 @@ function* postWriter( action ) {
       const response = yield axios.post('/api/writer', action.payload);
       console.log( 'adding writer: ', response.data );
       yield put( { type: 'FETCH_WRITER', payload: response.data } );
-      alert( 'writer saved!' );
   } catch( err ){
       alert( 'no' );
       console.log( err );

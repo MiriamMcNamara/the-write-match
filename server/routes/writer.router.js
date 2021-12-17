@@ -12,6 +12,16 @@ router.get('/:id', (req, res) => {
   // GET route code here
   const query = `SELECT * FROM writer WHERE user_id = ${req.params.id}`; 
   pool.query(query)
+      // .then( result => {
+      //   res.send(result.rows);
+      //   const seekingQuery = `SELECT skill from skill
+      //   JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
+      //   JOIN writer ON writer.id = writer_seeking.writer_id
+      //   WHERE user_id = ${req.params.id};`
+
+      //   pool.query(seekingQuery);
+      // })
+
       .then( result => {
         res.send(result.rows);
       })

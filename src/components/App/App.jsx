@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ViewProfile from '../ViewProfile/ViewProfile';
 import CreateProfile from '../CreateProfile/CreateProfile';
+import NewMatchesList from '../NewMatchesList/NewMatchesList';
 
 import './App.css';
 
@@ -85,6 +86,14 @@ function App() {
             path="/createprofile"
           >
             <CreateProfile />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows CreateProfile else shows LoginPage
+            exact
+            path="/newmatches"
+          >
+            <NewMatchesList />
           </ProtectedRoute>
 
           <Route

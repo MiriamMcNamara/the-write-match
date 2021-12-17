@@ -36,6 +36,10 @@ function Nav() {
               View Profile
             </Link>
 
+            <Link className="navLink" to="/newmatches">
+              See New Matches
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

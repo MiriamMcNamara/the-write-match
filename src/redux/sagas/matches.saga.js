@@ -3,15 +3,13 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchMatches( action ) {
-  // try {
-    
-  //   const response = yield axios.get(`/api/matches/${action.payload}`);
-
-  //   // use that user.id to build match query around
-  //   yield put({ type: 'SET_MATCHES', payload: response.data });
-  // } catch (error) {
-  //   console.log('matches get request failed', error);
-  // }
+  try {
+    //this will need to send data once I flesh it out but this works for now
+    const response = yield axios.get(`/api/matches/`);
+    yield put({ type: 'SET_MATCHES', payload: response.data });
+  } catch (error) {
+    console.log('matches get request failed', error);
+  }
 }
 
 function* postMatch( action ) {

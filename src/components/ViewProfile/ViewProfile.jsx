@@ -25,14 +25,13 @@ function ViewProfile(props) {
       <h2>{heading}</h2>
       <section className="profile" key={writer.id}>
             {writer.map( writer=>( 
-            <p>Name: {writer.name}
-            <br /> 
+            <div><p>Name: {writer.name}</p><br />
             <img src={writer.image} />
-            <br />
-            Bio: {writer.bio} 
-            <br />
-            Work In Progress: {writer.wip}</p>
-            
+            <br /><p>Bio: {writer.bio} </p><br />
+            <p>Work In Progress: {writer.wip}</p>
+            <br /><p>Genre</p>
+            <br /><p>Available For: available placeholder</p><br />
+            <p>Seeking: seeking placeholder</p></div>
 
             ))}
             </section>

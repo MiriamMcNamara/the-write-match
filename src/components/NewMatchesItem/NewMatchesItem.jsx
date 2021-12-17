@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 
-// Basic functional component structure for React with default state
-// value setup. When making a new component be sure to replace the
-// component name NewMatchesItem with the name for the new component.
 function NewMatchesItem(props) {
-  // Using hooks we're creating local state for a "heading" variable with
-  // a default value of 'Functional Component'
-  const store = useSelector((store) => store);
+
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('NewMatch!');
 
   const postMatch = () => {
     console.log( 'in postMatch' );
     //I need to send a dispatch with user.id and props.match.id
-    //I need to remove this whole item from the list! probably with a boolean flip?
-  }
+      dispatch({
+          type: 'POST_MATCH',
+          payload: {
+            initiator: user.id,
+            approver: props.match.id
+          }
+          //I need to remove this whole item from the list! probably with a boolean flip?
+      });
+    }
+  
 
   const removeMatch = () => {
     console.log( 'in removeMatch' );
+    //send a dispatch that removes the selected match from the store, shouldn't be too hard
+    // although it won't last through a page refresh probably
   }
 
   return (

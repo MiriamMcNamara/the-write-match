@@ -32,6 +32,15 @@ const {
  */
 router.post('/', (req, res) => {
   // POST route code here
+  console.log( 'POST match route hit');
+  let queryString = 'INSERT INTO matches ( initiator_id, approver_id, confirmed ) VALUES ( $1, $2, $3 )';
+  let values = [ req.body.initiator, req.body.approver, "FALSE" ];
+  pool.query( queryString, values ).then( (results)=>{
+      res.sendStatus( 201 )
+  }).catch( (err)=>{
+      console.log( err );
+      res.sendStatus( 500 );
+  })
 });
 
 /**

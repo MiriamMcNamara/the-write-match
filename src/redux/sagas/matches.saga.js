@@ -13,15 +13,15 @@ function* fetchMatches( action ) {
 }
 
 function* postMatch( action ) {
-  // console.log( '--------> in postMatch', action.payload );
-  // try {
-  //     const response = yield axios.post('/api/matches', action.payload);
-  //     console.log( 'adding match: ', response.data );
-  //     yield put( { type: 'FETCH_WRITER', payload: response.data } ); THIS NEEDS TO CHANGE
-  // } catch( err ){
-  //     alert( 'no' );
-  //     console.log( err );
-  //   }
+  console.log( '--------> in postMatch', action.payload );
+  try {
+      const response = yield axios.post('/api/matches', action.payload);
+      console.log( 'adding match: ', response.data );
+      yield put( { type: 'FETCH_MATCHES' } ); 
+  } catch( err ){
+      alert( 'no' );
+      console.log( err );
+    }
 }
 
 function* matchesSaga() {

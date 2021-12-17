@@ -40,6 +40,10 @@ function Nav() {
               See New Matches
             </Link>
 
+            <Link className="navLink" to="/selectedmatches">
+              See Current Matches
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}

@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ViewProfile from '../ViewProfile/ViewProfile';
 import CreateProfile from '../CreateProfile/CreateProfile';
 import NewMatchesList from '../NewMatchesList/NewMatchesList';
+import SelectedMatchesList from '../SelectedMatchesList/SelectedMatchesList';
 
 import './App.css';
 
@@ -89,11 +90,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows CreateProfile else shows LoginPage
+            // logged in shows NewMatches else shows LoginPage
             exact
             path="/newmatches"
           >
             <NewMatchesList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows SelectedMatches else shows LoginPage
+            exact
+            path="/selectedmatches"
+          >
+            <SelectedMatchesList />
           </ProtectedRoute>
 
           <Route

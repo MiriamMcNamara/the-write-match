@@ -5,11 +5,31 @@ const {
     rejectUnauthenticated,
   } = require('../modules/authentication-middleware');
 
+
+router.get('/existing/', (req,res)=>{
+  console.log( req.query );
+  //GET route code here for checking if there is a match in the database already!
+  const query = `SELECT * FROM matches
+  WHERE (approver_id = $1 OR approver_id = $2)
+  AND (initiator_id = $3 OR initiator_id = $4)`;
+  const values = [ req.query.approver, req.query.initiator, req.query.approver, req.query.initiator];
+  pool.query(query, values )
+      .then( result => {
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('ERROR: check for existing matches', err);
+        res.sendStatus(500)
+      })
+});
+  
+
+
 /**
  * GET route template
  */
  router.get('/', (req, res) => {
-  // GET route code here
+  // GET route code here for new matches!
   const query = `SELECT * FROM writer`;
   // WHERE user_id = ${req.params.id}`; this query 
   // will need to use the writer_seeking table, so need to get that in the store.
@@ -17,6 +37,7 @@ const {
   // matches. Will also need to specify not returning the user that is logged in.
   // i'll also need to make sure it matches the other way around? so their available_for
   //matches the other writer's seeking?
+  //and also not match with myself
   pool.query(query)
       .then( result => {
         res.send(result.rows);
@@ -46,8 +67,16 @@ router.post('/', (req, res) => {
 /**
  * PUT route template
  */
- router.put('/', (req, res) => {
+ router.put('/:id', (req, res) => {
   // PUT route code here
+  const query = `UPDATE matches SET confirmed=TRUE
+    WHERE approver_id=${req.params.id}`;
+    pool.query( query ).then( (results)=>{
+      res.sendStatus( 201 )
+  }).catch( (err)=>{
+      console.log( err );
+      res.sendStatus( 500 );
+  })
 });
 
 /**

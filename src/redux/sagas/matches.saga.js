@@ -12,6 +12,27 @@ function* fetchMatches( action ) {
   }
 }
 
+function* checkMatches( action ) {
+  try {
+    const response = yield axios.get(`/api/matches/existing/?initiator=${ action.payload.initiator }&approver=${action.payload.approver}` );
+    console.log( '----------->', response.data );
+    yield put({ type: 'SET_EXISTING', payload: response.data });
+  } catch (error) {
+    console.log('existing matches get request failed', error);
+  }
+
+}
+
+function* confirmMatch ( action ) {
+  try {
+    const response = yield axios.put(`/api/matches/${action.payload}`);
+  
+    yield put({ type: 'SET_MATCHES', payload: response.data });
+    } catch (error) {
+    console.log('writer put request failed', error);
+  }
+}
+
 function* postMatch( action ) {
   console.log( '--------> in postMatch', action.payload );
   try {
@@ -26,7 +47,9 @@ function* postMatch( action ) {
 
 function* matchesSaga() {
   yield takeLatest('FETCH_MATCHES', fetchMatches);
+  yield takeLatest('CHECK_MATCHES', checkMatches);
   yield takeLatest('POST_MATCH', postMatch);
+  yield takeLatest('CONFIRM_MATCH', confirmMatch);
 }
 
 export default matchesSaga;

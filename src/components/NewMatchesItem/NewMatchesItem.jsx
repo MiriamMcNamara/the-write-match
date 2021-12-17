@@ -4,26 +4,49 @@ import {useSelector, useDispatch } from 'react-redux';
 function NewMatchesItem(props) {
 
   const user = useSelector((store) => store.user);
+  const existing = useSelector((store) => store.existing);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('NewMatch!');
 
+  const checkForMatch = () => {
+    console.log( 'in checkForMatch' );
+  dispatch( { type: 'CHECK_MATCHES',
+    payload: {
+      initiator: user.id,
+      approver: props.match.id
+    }
+} );
+  console.log( existing );
+  // { existing ?
+  //   confirmMatch():
+  //   postMatch()
+  // }
+  };
+
+  const confirmMatch = () => {
+    console.log( 'in confirmMatch' );
+    dispatch( { type: 'CONFIRM_MATCH',
+        payload: user.id
+} );
+  }
+
   const postMatch = () => {
     console.log( 'in postMatch' );
-    //I need to send a dispatch with user.id and props.match.id
+    //send a dispatch with user.id and props.match.id
       dispatch({
           type: 'POST_MATCH',
           payload: {
             initiator: user.id,
             approver: props.match.id
           }
-          //I need to remove this whole item from the list! probably with a boolean flip?
+          //remove this whole item from the list! probably with a boolean flip?
       });
     }
   
 
   const removeMatch = () => {
     console.log( 'in removeMatch' );
-    //send a dispatch that removes the selected match from the store, shouldn't be too hard
+    //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard
     // although it won't last through a page refresh probably
   }
 
@@ -39,8 +62,8 @@ function NewMatchesItem(props) {
             <br /><p>Genre</p>
             <br /><p>Available For: available placeholder</p><br />
             <p>Seeking: seeking placeholder</p>
-            <button onClick={postMatch}>Match With This Writer!</button>
-            <button onClick={removeMatch}>Pass On This Writer!</button>
+            <button onClick={checkForMatch}>Match With This Writer!</button>
+            <button onClick={removeMatch}>Pass On This Writer</button>
             </div>
             
             </section>

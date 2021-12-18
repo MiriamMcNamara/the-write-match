@@ -17,15 +17,16 @@ function* checkMatches( action ) {
     const response = yield axios.get(`/api/matches/existing/?initiator=${ action.payload.initiator }&approver=${action.payload.approver}` );
     //if response.data is empty, run postMatch;
     //else, run confirmMatch;
-    if ( response.data ===[]){
+    if ( response.data.length ===0){
+      console.log( 'in IF----------->', response.data );
       yield put({ type: 'POST_MATCH', payload: action.payload })
     }
     else {
+      console.log( 'in ELSE----------->', response.data );
       yield put({ type: 'CONFIRM_MATCH', payload: action.payload });
     }
 
     // yield put({ type: 'SET_EXISTING', payload: response.data });
-    console.log( '----------->', response.data );
   } catch (error) {
     console.log('existing matches get request failed', error);
   }

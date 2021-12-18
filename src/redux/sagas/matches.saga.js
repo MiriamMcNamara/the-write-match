@@ -15,8 +15,17 @@ function* fetchMatches( action ) {
 function* checkMatches( action ) {
   try {
     const response = yield axios.get(`/api/matches/existing/?initiator=${ action.payload.initiator }&approver=${action.payload.approver}` );
+    //if response.data is empty, run postMatch;
+    //else, run confirmMatch;
+    if ( response.data ===[]){
+      yield put({ type: 'POST_MATCH', payload: action.payload })
+    }
+    else {
+      yield put({ type: 'CONFIRM_MATCH', payload: action.payload });
+    }
+
+    // yield put({ type: 'SET_EXISTING', payload: response.data });
     console.log( '----------->', response.data );
-    yield put({ type: 'SET_EXISTING', payload: response.data });
   } catch (error) {
     console.log('existing matches get request failed', error);
   }
@@ -25,9 +34,9 @@ function* checkMatches( action ) {
 
 function* confirmMatch ( action ) {
   try {
-    const response = yield axios.put(`/api/matches/${action.payload}`);
-  
+    const response = yield axios.put(`/api/matches/${action.payload.initiator}`);
     yield put({ type: 'SET_MATCHES', payload: response.data });
+    yield put( { type: 'FETCH_MATCHES' } );
     } catch (error) {
     console.log('writer put request failed', error);
   }

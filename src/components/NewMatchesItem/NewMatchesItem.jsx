@@ -12,36 +12,42 @@ function NewMatchesItem(props) {
     console.log( 'in checkForMatch' );
   dispatch( { type: 'CHECK_MATCHES',
     payload: {
-      initiator: user.id,
-      approver: props.match.id
+      initiator: props.match.id,
+      approver: user.id
     }
 } );
-  console.log( existing );
-  // { existing ?
-  //   confirmMatch():
-  //   postMatch()
+};
+
+  // const updateOrPost = () => {
+  //   console.log( 'in updateOrPost' );
+  //   console.log( 'existing', existing );
+  //   // if ( existing === []){
+  //   //   postMatch();
+  //   // }
+  //   // else {
+  //   //   confirmMatch();
+  //   // }
   // }
-  };
 
-  const confirmMatch = () => {
-    console.log( 'in confirmMatch' );
-    dispatch( { type: 'CONFIRM_MATCH',
-        payload: user.id
-} );
-  }
+//   const confirmMatch = () => {
+//     console.log( 'in confirmMatch' );
+//     dispatch( { type: 'CONFIRM_MATCH',
+//         payload: user.id
+// } );
+//   }
 
-  const postMatch = () => {
-    console.log( 'in postMatch' );
-    //send a dispatch with user.id and props.match.id
-      dispatch({
-          type: 'POST_MATCH',
-          payload: {
-            initiator: user.id,
-            approver: props.match.id
-          }
-          //remove this whole item from the list! probably with a boolean flip?
-      });
-    }
+  // const postMatch = () => {
+  //   console.log( 'in postMatch' );
+  //   //send a dispatch with user.id and props.match.id
+  //     dispatch({
+  //         type: 'POST_MATCH',
+  //         payload: {
+  //           initiator: user.id,
+  //           approver: props.match.id
+  //         }
+  //         //remove this whole item from the list! probably with a boolean flip?
+  //     });
+  //   }
   
 
   const removeMatch = () => {

@@ -28,14 +28,16 @@ router.get('/existing/', (req,res)=>{
 //this is the GET route that selects writers based on algorithm for the user
  router.get('/', (req, res) => {
   // GET route code here for new matches!
-  const query = `SELECT * FROM writer`;
-  // WHERE user_id = ${req.params.id}`; this query 
-  // will need to use the writer_seeking table, so need to get that in the store.
-  // then it'll hit the database and search for other writers whose writer_available_for
-  // matches. Will also need to specify not returning the user that is logged in.
-  // i'll also need to make sure it matches the other way around? so their available_for
-  //matches the other writer's seeking?
-  //and also not match with myself
+  const query = `SELECT * FROM writer
+  JOIN writer_available_for ON writer.id = writer_available_for.writer_id
+  JOIN writer_seeking ON writer.id = writer_seeking.writer_id
+  WHERE writer.id != 1
+  AND
+  (available_for_id =3 
+  OR seeking_id = 3)`;
+  //this needs further filtering where it checks against the matches database OR the select store
+  //and then needs correct req.query stuff entered instead of numbers (also entered on client side)
+  //and i need to figure out how to GROUP BY so that I don't get multiple responses
   pool.query(query)
       .then( result => {
         res.send(result.rows);

@@ -18,12 +18,12 @@ router.get('/:id', (req, res) => {
 // JOIN writer ON writer.id = writer_genre.writer_id
 // WHERE user_id = ${req.params.id}`;
 
-// const availableQuery = `SELECT skill FROM skill
+// const availableQuery = `SELECT skill, available_for_id FROM skill
 // JOIN writer_available_for ON skill.id = writer_available_for.available_for_id
 // JOIN writer ON writer.id = writer_available_for.writer_id
 // WHERE user_id = ${req.params.id}`;
 
-// const seekingQuery = `SELECT skill FROM skill
+// const seekingQuery = `SELECT skill, seeking_id FROM skill
 // JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
 // JOIN writer ON writer.id = writer_seeking.writer_id
 // WHERE user_id = ${req.params.id}`;

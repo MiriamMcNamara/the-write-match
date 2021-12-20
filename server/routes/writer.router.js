@@ -10,18 +10,32 @@ const {
  */
 router.get('/:id', (req, res) => {
   // GET route code here
-  const query = `SELECT * FROM writer WHERE user_id = ${req.params.id}`; 
-  pool.query(query)
-      // .then( result => {
-      //   res.send(result.rows);
-      //   const seekingQuery = `SELECT skill from skill
-      //   JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
-      //   JOIN writer ON writer.id = writer_seeking.writer_id
-      //   WHERE user_id = ${req.params.id};`
+  const writerQuery = `SELECT * FROM writer
+  WHERE user_id = ${req.params.id}`; 
 
-      //   pool.query(seekingQuery);
-      // })
+//   const genreQuery = `SELECT genre FROM genre
+// JOIN writer_genre ON genre.id = writer_genre.genre_id
+// JOIN writer ON writer.id = writer_genre.writer_id
+// WHERE user_id = ${req.params.id}`;
 
+// const availableQuery = `SELECT skill FROM skill
+// JOIN writer_available_for ON skill.id = writer_available_for.available_for_id
+// JOIN writer ON writer.id = writer_available_for.writer_id
+// WHERE user_id = ${req.params.id}`;
+
+// const seekingQuery = `SELECT skill FROM skill
+// JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
+// JOIN writer ON writer.id = writer_seeking.writer_id
+// WHERE user_id = ${req.params.id}`;
+
+  pool.query(writerQuery)
+//       .then ( result =>{
+//         const genreQuery = `SELECT genre FROM genre
+// JOIN writer_genre ON genre.id = writer_genre.genre_id
+// JOIN writer ON writer.id = writer_genre.writer_id
+// WHERE user_id = ${req.params.id}`;
+//         pool.query(genreQuery)
+//       })
       .then( result => {
         res.send(result.rows);
       })

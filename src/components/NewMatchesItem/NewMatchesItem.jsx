@@ -4,16 +4,15 @@ import {useSelector, useDispatch } from 'react-redux';
 function NewMatchesItem(props) {
 
   const writer = useSelector((store) => store.writer);
-  const existing = useSelector((store) => store.existing);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('NewMatch!');
 
   const checkForMatch = () => {
-    console.log( 'in checkForMatch, initiator:', props.match.id, 'approver:', writer.id );
+    console.log( 'in checkForMatch, initiator:', props.match.id, 'approver:', writer[0].id );
   dispatch( { type: 'CHECK_MATCHES',
     payload: {
       initiator: props.match.id,
-      approver: writer.id
+      approver: writer[0].id
     }
 } );
 };
@@ -60,8 +59,6 @@ function NewMatchesItem(props) {
     <div>
       <h2>{heading}</h2>
       <section className="profile" key={props.match.id}>
-             <p>writer: {JSON.stringify( writer )}</p>
-             <p>writer.id: {JSON.stringify( writer.id )}</p>
             <div><p>Name: {props.match.name}</p><br />
             <img src={props.match.image} />
             <br /><p>Bio: {props.match.bio} </p><br />

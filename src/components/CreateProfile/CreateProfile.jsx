@@ -91,6 +91,7 @@ const handleContact = (event )=>{ //input capture
                 <option value="6">Romance</option>
                 <option value="7">Historical Fiction</option>
                 <option value="8">Thriller</option>
+                <option value="9">Poetry</option>
             </select>
       <br />
       <label>What Is Your Primary Skill?</label>
@@ -102,6 +103,7 @@ const handleContact = (event )=>{ //input capture
                 <option value="4">Manuscript Swap</option>
                 <option value="5">World-Building</option>
                 <option value="6">Publishing Strategy</option>
+                <option value="7">Socializing</option>
             </select>
             <br />
       <label>What Are You Seeking On This Site?</label>
@@ -112,6 +114,7 @@ const handleContact = (event )=>{ //input capture
                 <option value="4">Manuscript Swap</option>
                 <option value="5">World-Building</option>
                 <option value="6">Publishing Strategy</option>
+                <option value="7">Socializing</option>
             </select>
             <br />
             <p>In the event of a match, how would you like other writers to contact you?</p>

@@ -5,7 +5,7 @@ const {
     rejectUnauthenticated,
   } = require('../modules/authentication-middleware');
 
-
+//this is the GET route that proceeds the POST or the PUT, which checks for a match
 router.get('/existing/', (req,res)=>{
   console.log( req.query );
   //GET route code here for checking if there is a match in the database already!
@@ -25,9 +25,7 @@ router.get('/existing/', (req,res)=>{
   
 
 
-/**
- * GET route template
- */
+//this is the GET route that selects writers based on algorithm for the user
  router.get('/', (req, res) => {
   // GET route code here for new matches!
   const query = `SELECT * FROM writer`;
@@ -77,13 +75,6 @@ router.post('/', (req, res) => {
       console.log( err );
       res.sendStatus( 500 );
   })
-});
-
-/**
- * DELETE route template
- */
- router.delete('/', (req, res) => {
-  // DELETE route code here
 });
 
 module.exports = router;

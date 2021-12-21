@@ -12,11 +12,31 @@ router.get('/:id', (req, res) => {
   // GET route code here
   const writerQuery = `SELECT * FROM writer
   WHERE user_id = ${req.params.id}`; 
+  pool.query(writerQuery)
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get writer', err);
+      res.sendStatus(500)
+    })
+  });
 
-//   const genreQuery = `SELECT genre FROM genre
-// JOIN writer_genre ON genre.id = writer_genre.genre_id
-// JOIN writer ON writer.id = writer_genre.writer_id
-// WHERE user_id = ${req.params.id}`;
+  router.get('/genre/:id', (req, res) => {
+    // GET route code here
+    const genreQuery = `SELECT genre FROM genre
+    JOIN writer_genre ON genre.id = writer_genre.genre_id
+    JOIN writer ON writer.id = writer_genre.writer_id
+    WHERE user_id = ${req.params.id}`; 
+    pool.query(genreQuery)
+      .then( result => {
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('ERROR: Get writer', err);
+        res.sendStatus(500)
+      })
+    });
 
 // const availableQuery = `SELECT skill, available_for_id FROM skill
 // JOIN writer_available_for ON skill.id = writer_available_for.available_for_id
@@ -28,22 +48,6 @@ router.get('/:id', (req, res) => {
 // JOIN writer ON writer.id = writer_seeking.writer_id
 // WHERE user_id = ${req.params.id}`;
 
-  pool.query(writerQuery)
-//       .then ( result =>{
-//         const genreQuery = `SELECT genre FROM genre
-// JOIN writer_genre ON genre.id = writer_genre.genre_id
-// JOIN writer ON writer.id = writer_genre.writer_id
-// WHERE user_id = ${req.params.id}`;
-//         pool.query(genreQuery)
-//       })
-      .then( result => {
-        res.send(result.rows);
-      })
-      .catch(err => {
-        console.log('ERROR: Get writer', err);
-        res.sendStatus(500)
-      })
-    });
 
 /**
  * POST route
@@ -93,7 +97,6 @@ router.post('/', (req, res) => {
          //Now that all are done, send back success!
           res.sendStatus(201);
         }).catch(err => {
-         // catch for second query; where for third and fourth?
           console.log(err);
           res.sendStatus(500)
         })

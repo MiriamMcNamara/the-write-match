@@ -12,6 +12,16 @@ function* fetchWriter( action ) {
   }
 }
 
+function* fetchGenre( action ) {
+  try {
+    
+    const response = yield axios.get(`/api/writer/genre/${action.payload}`);
+    yield put({ type: 'SET_GENRE', payload: response.data });
+  } catch (error) {
+    console.log('writer get request failed', error);
+  }
+}
+
 function* postWriter( action ) {
   console.log( '--------> in postWriter', action.payload );
   try {
@@ -27,6 +37,7 @@ function* postWriter( action ) {
 function* writerSaga() {
   yield takeLatest('FETCH_WRITER', fetchWriter);
   yield takeLatest('POST_WRITER', postWriter);
+  yield takeLatest('FETCH_GENRE', fetchGenre);
 }
 
 export default writerSaga;

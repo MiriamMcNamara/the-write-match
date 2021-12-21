@@ -4,6 +4,7 @@ import user from './user.reducer';
 import writer from './writer.reducer';
 import matches from './matches.reducer';
 import selected from './selected.reducer';
+import genre from './genre.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   writer, //contains other info about writer that is logged in
   matches, //contains an array of matches for the writer that is logged in
   selected, //contains an array of selected matches for the writer that is logged in
+  genre //contains an array of genres for the writer that is logged in
 });
 
 export default rootReducer;

@@ -13,10 +13,14 @@ function ViewProfile(props) {
     dispatch( { type: 'FETCH_WRITER',
                 payload: user.id
   } );
+  dispatch( { type: 'FETCH_GENRE',
+  payload: user.id
+} );
   }, []);
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
   const writer = useSelector((store) => store.writer);
+  const genre = useSelector((store) => store.genre);
   const user = useSelector(( store) => store.user );
   const [heading, setHeading] = useState('View Profile');
 
@@ -24,6 +28,7 @@ function ViewProfile(props) {
     <div>
       <h2>{heading}</h2>
       <p>{JSON.stringify(writer)}</p>
+      <p>{JSON.stringify(genre)}</p>
       <section className="profile" key={writer.id}>
             {writer.map( writer=>(
             <div><p>Name: {writer.name}</p><br />

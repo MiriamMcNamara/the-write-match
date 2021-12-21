@@ -22,6 +22,26 @@ function* fetchGenre( action ) {
   }
 }
 
+function* fetchSeeking( action ) {
+  try {
+    
+    const response = yield axios.get(`/api/writer/seeking/${action.payload}`);
+    yield put({ type: 'SET_SEEKING', payload: response.data });
+  } catch (error) {
+    console.log('writer get request failed', error);
+  }
+}
+
+function* fetchAvailableFor( action ) {
+  try {
+    
+    const response = yield axios.get(`/api/writer/availablefor/${action.payload}`);
+    yield put({ type: 'SET_AVAILABLE_FOR', payload: response.data });
+  } catch (error) {
+    console.log('writer get request failed', error);
+  }
+}
+
 function* postWriter( action ) {
   console.log( '--------> in postWriter', action.payload );
   try {
@@ -38,6 +58,8 @@ function* writerSaga() {
   yield takeLatest('FETCH_WRITER', fetchWriter);
   yield takeLatest('POST_WRITER', postWriter);
   yield takeLatest('FETCH_GENRE', fetchGenre);
+  yield takeLatest('FETCH_SEEKING', fetchSeeking);
+  yield takeLatest('FETCH_AVAILABLE_FOR', fetchAvailableFor);
 }
 
 export default writerSaga;

@@ -38,16 +38,37 @@ router.get('/:id', (req, res) => {
       })
     });
 
-// const availableQuery = `SELECT skill, available_for_id FROM skill
-// JOIN writer_available_for ON skill.id = writer_available_for.available_for_id
-// JOIN writer ON writer.id = writer_available_for.writer_id
-// WHERE user_id = ${req.params.id}`;
+    router.get('/seeking/:id', (req, res) => {
+      // GET route code here
+      const seekingQuery = `SELECT skill, seeking_id FROM skill
+JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
+JOIN writer ON writer.id = writer_seeking.writer_id
+WHERE user_id = ${req.params.id}`;
+      pool.query(seekingQuery)
+        .then( result => {
+          res.send(result.rows);
+        })
+        .catch(err => {
+          console.log('ERROR: Get writer', err);
+          res.sendStatus(500)
+        })
+      });
 
-// const seekingQuery = `SELECT skill, seeking_id FROM skill
-// JOIN writer_seeking ON skill.id = writer_seeking.seeking_id
-// JOIN writer ON writer.id = writer_seeking.writer_id
-// WHERE user_id = ${req.params.id}`;
-
+      router.get('/availablefor/:id', (req, res) => {
+        // GET route code here
+const availableQuery = `SELECT skill, available_for_id FROM skill
+JOIN writer_available_for ON skill.id = writer_available_for.available_for_id
+JOIN writer ON writer.id = writer_available_for.writer_id
+WHERE user_id = ${req.params.id}`;
+        pool.query(availableQuery)
+          .then( result => {
+            res.send(result.rows);
+          })
+          .catch(err => {
+            console.log('ERROR: Get writer', err);
+            res.sendStatus(500)
+          })
+        });
 
 /**
  * POST route

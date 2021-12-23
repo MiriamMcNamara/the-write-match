@@ -10,11 +10,6 @@ function SelectedMatchesList(props) {
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('Current Matches');
 
-  useEffect( ()=>{
-    dispatch( { type: 'FETCH_SELECTED',
-                payload: user.id //I think this is what we need?
-  } );
-  }, []);
 
   return (
     <div>

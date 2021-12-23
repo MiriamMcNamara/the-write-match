@@ -17,38 +17,6 @@ function NewMatchesItem(props) {
 } );
 };
 
-  // const updateOrPost = () => {
-  //   console.log( 'in updateOrPost' );
-  //   console.log( 'existing', existing );
-  //   // if ( existing === []){
-  //   //   postMatch();
-  //   // }
-  //   // else {
-  //   //   confirmMatch();
-  //   // }
-  // }
-
-//   const confirmMatch = () => {
-//     console.log( 'in confirmMatch' );
-//     dispatch( { type: 'CONFIRM_MATCH',
-//         payload: user.id
-// } );
-//   }
-
-  // const postMatch = () => {
-  //   console.log( 'in postMatch' );
-  //   //send a dispatch with user.id and props.match.id
-  //     dispatch({
-  //         type: 'POST_MATCH',
-  //         payload: {
-  //           initiator: user.id,
-  //           approver: props.match.id
-  //         }
-  //         //remove this whole item from the list! probably with a boolean flip?
-  //     });
-  //   }
-  
-
   const removeMatch = () => {
     console.log( 'in removeMatch' );
     //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard

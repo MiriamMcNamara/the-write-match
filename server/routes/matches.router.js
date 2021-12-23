@@ -31,10 +31,10 @@ router.get('/existing/', (req,res)=>{
   const query = `SELECT DISTINCT writer.id, name, image, bio, wip, contact FROM writer
   JOIN writer_available_for ON writer.id = writer_available_for.writer_id
   JOIN writer_seeking ON writer.id = writer_seeking.writer_id
-  WHERE writer.id != 1
+  WHERE writer.id != ${req.query.writer}
   AND
-  (available_for_id =3 
-  OR seeking_id = 3);`;
+  (available_for_id =${req.query.seeking} 
+  OR seeking_id = ${req.query.availablefor} );`;
   //this needs further filtering where it checks against the matches database OR the select store
   //and then needs correct req.query stuff entered instead of numbers (also entered on client side)
   pool.query(query)

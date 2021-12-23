@@ -3,8 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import writerSaga from './writer.saga';
-import matchesSaga from './matches.saga';
-import selectedSaga from './selected.saga';
+import matchesSaga from './matches.saga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -15,11 +14,10 @@ import selectedSaga from './selected.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(), // login saga is now registered
+    loginSaga(), 
     registrationSaga(),
     userSaga(),
     writerSaga(),
-    matchesSaga(),
-    selectedSaga()
+    matchesSaga()
   ]);
 }

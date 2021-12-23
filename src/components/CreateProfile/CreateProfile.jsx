@@ -16,7 +16,7 @@ function CreateProfile(props) {
     image: '',
     bio: '',
     wip: '',
-    genre: 0,
+    genres: '',
     skill: 0,
     seeking: 0,
     contact: '',
@@ -54,9 +54,9 @@ const handleWip = (event )=>{ //input capture
 }
 
 
-const handleGenre = (event )=>{ //input capture
+const handleGenres = (event )=>{ //input capture
   console.log( 'in handleGenre:', event.target.value);
-  setAddWriter( {...addWriter, genre: Number(event.target.value)} );
+  setAddWriter( {...addWriter, genres: event.target.value} );
 }
 
 const handleSkill = (event )=>{ //input capture
@@ -81,18 +81,8 @@ const handleContact = (event )=>{ //input capture
       <p>Profile Image URL: </p><input type='text' placeholder='image url' onChange={(event ) =>handleImage ( event )}></input>
       <p>Bio: </p><textarea type='text' placeholder='bio' onChange={(event ) =>handleBio ( event )}></textarea>
       <p>Describe Your Work In Progress: </p><input type='text' placeholder='wip' onChange={(event ) =>handleWip ( event )}></input>
-      <label>Select a Genre for your WIP: </label>
-            <select name="genre" id="genre" onChange={(event ) =>handleGenre ( event )}>
-                <option value="1">Science Fiction/Fantasy</option>
-                <option value="2">Memoir</option>
-                <option value="3">Young Adult/Middle Grade</option>
-                <option value="4">Picture Books</option>
-                <option value="5">Mystery</option>
-                <option value="6">Romance</option>
-                <option value="7">Historical Fiction</option>
-                <option value="8">Thriller</option>
-                <option value="9">Poetry</option>
-            </select>
+      <label>What are the genres that you write in? </label>
+            <input type='text' placeholder='genres' onChange={(event ) =>handleGenres ( event )}></input>
       <br />
       <label>What Is Your Primary Skill?</label>
       {/* would like to change this to 'What are your skills?' */}

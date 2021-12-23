@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 function CreateProfile(props) {
 
   const dispatch = useDispatch();
-  const store = useSelector((store) => store);
   const user = useSelector(( store) => store.user );
   const history = useHistory();
   const [heading, setHeading] = useState('Create Profile');

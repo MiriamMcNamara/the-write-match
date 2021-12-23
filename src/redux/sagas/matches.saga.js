@@ -12,22 +12,30 @@ function* filterMatches(action) {
       console.log(matches.data);
       console.log(selected.data);
       let matchesArray = [];
+      if( selected.data.length>0){
       for (let i = 0; i < matches.data.length; i++) {
         console.log("in loop");
+        let hasMatchedWithAnyUser = false;
         for (let j = 0; j < selected.data.length; j++) {
           if (
-            matches.data[i].id != selected.data[j].approver_id
+            matches.data[i].id == selected.data[j].approver_id
             //this needs one additional layer of filtering to filter out
             //confirmed matches as well, somthing like:
             // ||
             // (matches.data[i].id != selected.data[j].initiator_id
             // && selected.data[j].approver_id != action.payload.writer)
           ) {
-            console.log("in loop");
-            matchesArray.push(matches.data[i]);
+            hasMatchedWithAnyUser = true;
+            console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches turned true' );
           } //end if statement
+          else{ console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches remains false') }
         } //end j loop
+        if (hasMatchedWithAnyUser == false){ matchesArray.push(matches.data[i])};
       } //end i loop
+    }//end other if
+    else{
+      matchesArray=matches.data;
+    }
       console.log("matches array:", matchesArray);
       yield put({ type: "SET_MATCHES", payload: matchesArray });
       yield put({ type: "SET_SELECTED", payload: selected.data });

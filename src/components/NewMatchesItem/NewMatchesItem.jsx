@@ -26,6 +26,10 @@ function NewMatchesItem(props) {
     console.log("in removeMatch");
     //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard
     // although it won't last through a page refresh probably
+    dispatch({
+      type: "REMOVE_MATCH",
+      payload: props.match.id
+    });
   };
 
   return (

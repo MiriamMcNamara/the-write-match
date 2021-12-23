@@ -2,6 +2,8 @@ const matchesReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_MATCHES':
       return action.payload;
+    case 'REMOVE_MATCH':
+      return state-action.payload;
     default:
       return state;
   }

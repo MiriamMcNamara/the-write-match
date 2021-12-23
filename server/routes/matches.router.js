@@ -20,7 +20,7 @@ router.get("/existing/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-
+  
 //this is the GET route that selects writers based on algorithm for the user
 router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `SELECT DISTINCT writer.id, name, image, bio, wip, contact, genres FROM writer

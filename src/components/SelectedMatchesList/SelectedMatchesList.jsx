@@ -5,7 +5,6 @@ import SelectedMatchesItem from '../SelectedMatchesItem/SelectedMatchesItem';
 
 function SelectedMatchesList(props) {
 
-  const user = useSelector((store) => store.user);
   const selected = useSelector((store) => store.selected);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('Current Matches');

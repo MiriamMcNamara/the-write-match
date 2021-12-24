@@ -6,6 +6,9 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { lightGreen, cyan } from '@mui/material/colors';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -26,6 +29,18 @@ import SelectedMatchesList from '../SelectedMatchesList/SelectedMatchesList';
 
 import './App.css';
 
+const theme =createTheme({
+  palette:{
+    primary: cyan,
+    secondary: lightGreen
+  }
+  // typography:{
+  //   fontfamily: Padauk,
+  //   fontWeightRegular: 400,
+  //   fontWeightBold: 400
+  // }
+})
+
 function App() {
   const dispatch = useDispatch();
 
@@ -36,6 +51,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -155,6 +171,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

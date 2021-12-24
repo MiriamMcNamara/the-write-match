@@ -33,12 +33,12 @@ const theme =createTheme({
   palette:{
     primary: cyan,
     secondary: lightGreen
+  },
+  typography:{
+    fontfamily: 'Padauk',
+    fontWeightRegular: 400,
+    fontWeightBold: 400
   }
-  // typography:{
-  //   fontfamily: Padauk,
-  //   fontWeightRegular: 400,
-  //   fontWeightBold: 400
-  // }
 })
 
 function App() {

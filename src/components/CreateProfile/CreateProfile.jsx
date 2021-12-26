@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Container, Typography, TextField, Button } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+
+const useStyles = makeStyles({
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: 'block'
+  },
+  select: {
+    minWidth: 300
+  }
+})
 
 
 function CreateProfile(props) {
+
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const user = useSelector(( store) => store.user );
@@ -16,20 +32,25 @@ function CreateProfile(props) {
     bio: '',
     wip: '',
     genres: '',
-    skill: 0,
-    seeking: 0,
+    skill: '',
+    seeking: '',
     contact: '',
     user_id: user.id
 } );
 
 const postWriter = ()=>{
-  console.log( 'in postWriter' );
-  console.log( addWriter );
+  if (addWriter.name && addWriter.image && addWriter.bio && addWriter.wip && addWriter.genres
+    && addWriter.skill && addWriter.seeking && addWriter.contact){
+      console.log( 'in postWriter', addWriter)
   dispatch({
       type: 'POST_WRITER',
       payload: addWriter
   });
   history.push( '/profile' );
+}//end if statement
+else{
+  alert ( 'All fields must be entered before proceeding' );
+}
 }
 
 const handleName = (event )=>{ //input capture
@@ -74,43 +95,128 @@ const handleContact = (event )=>{ //input capture
 }
 
   return (
-    <div>
-      <h2>{heading}</h2>
-      <p>Name: </p><input type='text' placeholder='name' onChange={(event ) =>handleName ( event )}></input>
-      <p>Profile Image URL: </p><input type='text' placeholder='image url' onChange={(event ) =>handleImage ( event )}></input>
-      <p>Bio: </p><textarea type='text' placeholder='bio' onChange={(event ) =>handleBio ( event )}></textarea>
-      <p>Describe Your Work In Progress: </p><input type='text' placeholder='wip' onChange={(event ) =>handleWip ( event )}></input>
-      <label>What are the genres that you write in? </label>
-            <input type='text' placeholder='genres' onChange={(event ) =>handleGenres ( event )}></input>
-      <br />
-      <label>What Is Your Primary Skill?</label>
-      {/* would like to change this to 'What are your skills?' */}
-            <select name="skill" id="skill" onChange={(event ) =>handleSkill ( event )}>
-                <option value="1">Developmental Editing</option>
-                <option value="2">Copy/Line Editing</option>
-                <option value="3">Accountability Buddy</option>
-                <option value="4">Manuscript Swap</option>
-                <option value="5">World-Building</option>
-                <option value="6">Publishing Strategy</option>
-                <option value="7">Socializing</option>
-            </select>
-            <br />
-      <label>What Are You Seeking On This Site?</label>
-            <select name="seeking" id="seeking" onChange={(event ) =>handleSeeking ( event )}>
-                <option value="1">Developmental Editing</option>
-                <option value="2">Copy/Line Editing</option>
-                <option value="3">Accountability Buddy</option>
-                <option value="4">Manuscript Swap</option>
-                <option value="5">World-Building</option>
-                <option value="6">Publishing Strategy</option>
-                <option value="7">Socializing</option>
-            </select>
-            <br />
-            <p>In the event of a match, how would you like other writers to contact you?</p>
-            <input type='text' placeholder='contact info' onChange={(event ) =>handleContact ( event )}></input>
-            <br />
-            <button onClick={postWriter}>Submit Profile</button>
-    </div>
+    <Container>
+    
+    <Typography
+      variant="h6"
+      color="primary"
+      component="h2"
+      gutterBottom>
+      Create Profile
+    </Typography>
+
+    <form noValidate autoComplete="off">
+      <TextField
+      className={classes.field}
+      label="Name"
+      variant="outlined"
+      color="secondary"
+      onChange={(event ) =>handleName ( event )}
+      />
+
+      <TextField
+      className={classes.field}
+      label="Image URL"
+      variant="outlined"
+      color="secondary"
+      fullWidth
+      onChange={(event ) =>handleImage ( event )}
+      />
+
+      <TextField
+      className={classes.field}
+      label="Bio"
+      variant="outlined"
+      color="secondary"
+      multiline
+      rows={4}
+      fullWidth
+      onChange={(event ) =>handleBio ( event )}
+      />
+        
+        <TextField
+      className={classes.field}
+      label="Describe Your Work In Progress"
+      variant="outlined"
+      color="secondary"
+      multiline
+      rows={2}
+      fullWidth
+      onChange={(event ) =>handleWip ( event )}
+      />
+
+<TextField
+      className={classes.field}
+      label="What Genres Do You Write In?"
+      variant="outlined"
+      color="secondary"
+      fullWidth
+      onChange={(event ) =>handleGenres ( event )}
+      />
+      <FormControl>
+<InputLabel color="secondary">What Is Your Primary Skill?</InputLabel>
+<Select 
+          className={classes.select}
+          labelId="select-skill"
+          id="skill-select"
+          value={addWriter.skill}
+          label="skill"
+          color="secondary"
+          onChange={(event ) =>handleSkill ( event )}
+        >
+          <MenuItem value={1}>Developmental Editing</MenuItem>
+          <MenuItem value={2}>Copy/Line Editing</MenuItem>
+          <MenuItem value={3}>Accountability Buddy</MenuItem>
+          <MenuItem value={4}>Manuscript Swap</MenuItem>
+          <MenuItem value={5}>World/Building</MenuItem>
+          <MenuItem value={6}>Publishing Strategy</MenuItem>
+          <MenuItem value={7}>Socializing</MenuItem>
+        </Select>
+        </FormControl>
+
+<FormControl>
+        <InputLabel color="secondary">What Are You Seeking on This Site?</InputLabel>
+<Select 
+          className={classes.select}
+          labelId="select-seeking"
+          id="seeking-select"
+          value={addWriter.seeking}
+          label="seeking"
+          color="secondary"
+          onChange={(event ) =>handleSeeking ( event )}
+        >
+          <MenuItem value={1}>Developmental Editing</MenuItem>
+          <MenuItem value={2}>Copy/Line Editing</MenuItem>
+          <MenuItem value={3}>Accountability Buddy</MenuItem>
+          <MenuItem value={4}>Manuscript Swap</MenuItem>
+          <MenuItem value={5}>World/Building</MenuItem>
+          <MenuItem value={6}>Publishing Strategy</MenuItem>
+          <MenuItem value={7}>Socializing</MenuItem>
+        </Select>
+        </FormControl>
+
+<Typography>In the event of a Match, how would you like other writers to contact you?</Typography>
+<TextField
+      className={classes.field}
+      label="Contact Info"
+      variant="outlined"
+      color="secondary"
+      fullWidth
+      onChange={(event ) =>handleContact ( event )}
+      />
+
+      <Button
+        type="submit"
+        color="secondary"
+        variant="contained"
+        onClick={postWriter}
+      >
+        SUBMIT</Button>
+  
+    </form>
+
+
+    </Container>
   );
 }
 

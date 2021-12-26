@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Grid, Typography, Box, Card, CardContent, CardActions, TextField, Button } from "@mui/material";
+import { Grid, Typography, Container, Paper, Button } from "@mui/material";
 
 function ViewProfile(props) {
   const dispatch = useDispatch();
@@ -15,34 +15,56 @@ function ViewProfile(props) {
   const seeking = useSelector((store) => store.seeking);
   const availableFor = useSelector((store) => store.availablefor);
   const user = useSelector((store) => store.user);
-  const [heading, setHeading] = useState("View Profile");
+  const [heading, setHeading] = useState("My Profile");
 
   return (
-    <div>
-      <h2>{heading}</h2>
-      <p>{JSON.stringify(writer)}</p>
-      <p>{JSON.stringify(seeking)}</p>
-      <p>{JSON.stringify(availableFor)}</p>
-      <section className="profile" key={writer.id}>
-        {writer.map((writer) => (
-          <div>
-            <p>Name: {writer.name}</p>
-            <br />
-            <img src={writer.image} />
-            <br />
-            <p>Bio: {writer.bio} </p>
-            <br />
-            <p>Work In Progress: {writer.wip}</p>
-            <br />
-            <p>Genre</p>
-            <br />
-            <p>Available For: available placeholder</p>
-            <br />
-            <p>Seeking: seeking placeholder</p>
-          </div>
-        ))}
-      </section>
-    </div>
+    <Container>
+      <Grid container padding="10px">
+        <Paper padding="10px">
+          <Grid item xs={12} padding="10px">
+            <Typography
+              variant="h4"
+              color="primary"
+              component="h2"
+              gutterBottom
+            >
+              {heading}
+            </Typography>
+          </Grid>
+          {writer.map((writer) => (
+            <Grid item className="profile" key={writer.id} padding="10px">
+              <Typography variant="h4" fontStyle="italic" color="secondary">
+                {writer.name}
+              </Typography>
+              <br />
+              <img src={writer.image} />
+              <br />
+              <Typography>{writer.bio}</Typography>
+              <br />
+              <Typography variant="h6">Work In Progress:</Typography>
+              <Typography>{writer.wip}</Typography>
+              <br />
+              <Typography variant="h6">Genre:</Typography>
+              <Typography>{writer.genres}</Typography>
+            </Grid>
+          ))}
+    
+          {availableFor.map((availableFor) => (
+            <Grid item className="availableFor" key={writer.id} padding="10px">
+              <Typography variant="h6">Available For:</Typography>
+              <Typography>{availableFor.skill}</Typography>
+            </Grid>
+          ))}
+  
+          {seeking.map((seeking) => (
+            <Grid item className="seeking" key={writer.id} padding="10px">
+              <Typography variant="h6">Seeking:</Typography>
+              <Typography>{seeking.skill}</Typography>
+            </Grid>
+          ))}
+        </Paper>
+      </Grid>
+    </Container>
   );
 }
 

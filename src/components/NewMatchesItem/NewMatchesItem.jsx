@@ -35,7 +35,7 @@ function NewMatchesItem(props) {
   };
 
   return (
-      <Grid item>
+      <Grid item key={props.match.id}>
       <Card elevation={2}>
         <CardContent>
         <Typography variant="h4">{heading}</Typography>

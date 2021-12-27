@@ -8,6 +8,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
+    
     <div className="nav">
       <Link to="/home">
         <h1 className="nav-title">The WRITE Match</h1>

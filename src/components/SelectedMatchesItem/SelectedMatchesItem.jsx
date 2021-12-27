@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Grid, CardMedia, Card, CardContent, Typography, Button } from '@mui/material';
 
 function SelectedMatchesItem(props) {
   const store = useSelector((store) => store);
@@ -15,51 +16,59 @@ function SelectedMatchesItem(props) {
   };
 
   return (
-    <div>
-      <h2>{heading}</h2>
-      <p>{JSON.stringify(props)}</p>
-      {props.selected.confirmed ? (
-        <section className="profile" key={props.selected.id}>
-          <h3>CONFIRMED MATCH!</h3>
-          <div>
-            <p>Name: {props.selected.name}</p>
-            <br />
-            <img src={props.selected.image} />
-            <br />
-            <p>Bio: {props.selected.bio} </p>
-            <br />
-            <p>Work In Progress: {props.selected.wip}</p>
-            <br />
-            <p>Genre</p>
-            <br />
-            <p>Available For: available placeholder</p>
-            <br />
-            <p>Seeking: seeking placeholder</p>
-            <button>Contact This Writer!</button>
-          </div>
-        </section>
+  props.selected.confirmed ? (
+    <Grid item key={props.selected.id}>
+      <Card elevation={2}>
+        <CardContent>
+        <Typography variant="h4">{heading}</Typography>
+        <br />
+        <Typography variant="h5">{props.selected.name}</Typography>
+        </CardContent>
+        <CardMedia
+        component="img"
+        image={props.selected.image}
+        alt="matched writer"
+      />
+        <CardContent>
+        <Typography variant="body1">{props.selected.bio}</Typography>
+        <br />
+        <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
+        <br />
+        <Typography variant="body2">Genres: {props.selected.genres}</Typography>
+        </CardContent>
+        <Button variant="outlined">
+        Contact This Writer!
+        </Button>
+      </Card>
+      </Grid>
       ) : (
-        <section className="profile" key={props.selected.id}>
-          <h3>AWAITING CONFIRMATION</h3>
-          <div>
-            <p>Name: {props.selected.name}</p>
-            <br />
-            <img src={props.selected.image} />
-            <br />
-            <p>Bio: {props.selected.bio} </p>
-            <br />
-            <p>Work In Progress: {props.selected.wip}</p>
-            <br />
-            <p>Genre</p>
-            <br />
-            <p>Available For: available placeholder</p>
-            <br />
-            <p>Seeking: seeking placeholder</p>
-            <button onClick={deleteSelected}>Remove This Match</button>
-          </div>
-        </section>
-      )}
-    </div>
+
+      <Grid item key={props.selected.id}>
+      <Card elevation={2}>
+        <CardContent>
+        <Typography variant="h4">{heading}</Typography>
+        <br />
+        <Typography variant="h5">{props.selected.name}</Typography>
+        </CardContent>
+        <CardMedia
+        component="img"
+        image={props.selected.image}
+        alt="matched writer"
+      />
+        <CardContent>
+        <Typography variant="body1">{props.selected.bio}</Typography>
+        <br />
+        <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
+        <br />
+        <Typography variant="body2">Genres: {props.selected.genres}</Typography>
+        </CardContent>
+        <Button variant="outlined" onClick={deleteSelected}>
+        Pass on This Writer
+        </Button>
+      </Card>
+      </Grid>
+      )
+
   );
 }
 

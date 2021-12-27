@@ -25,6 +25,7 @@ import ViewProfile from '../ViewProfile/ViewProfile';
 import CreateProfile from '../CreateProfile/CreateProfile';
 import NewMatchesList from '../NewMatchesList/NewMatchesList';
 import SelectedMatchesList from '../SelectedMatchesList/SelectedMatchesList';
+import NewNav from '../NewNav/NewNav';
 
 import './App.css';
 import { autocompleteClasses } from '@mui/material';
@@ -55,6 +56,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <NewNav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

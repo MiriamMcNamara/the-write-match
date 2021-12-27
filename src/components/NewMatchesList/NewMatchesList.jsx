@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NewMatchesItem from "../NewMatchesItem/NewMatchesItem";
+import { Typography, Container, Grid } from '@mui/material';
 
 function NewMatchesList(props) {
   const dispatch = useDispatch();
@@ -26,16 +27,14 @@ function NewMatchesList(props) {
   }, []);
 
   return (
-    <div>
-      <p>{JSON.stringify(writer)}</p>
-      <p>{JSON.stringify(matches)}</p>
-      <p>{JSON.stringify(selected)}</p>
-
-      <h2>{heading}</h2>
-      {matches.map((match) => (
+    <Container>
+      <Grid container spacing={3}>
+        <Typography variant="h3" color="primary">{heading}</Typography>
+        {matches.map((match) => (
         <NewMatchesItem match={match} />
       ))}
-    </div>
+      </Grid>
+    </Container>
   );
 }
 

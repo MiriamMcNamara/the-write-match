@@ -39,6 +39,7 @@ function ViewProfile(props) {
               <br />
               <img src={writer.image} />
               <br />
+              <br />
               <Typography>{writer.bio}</Typography>
               <br />
               <Typography variant="h6">Work In Progress:</Typography>

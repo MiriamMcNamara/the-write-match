@@ -11,11 +11,11 @@ import {
   Grid,
   Paper,
 } from "@mui/material";
+import { normalizeQueryConfig } from "pg/lib/utils";
 
 const useStyles = makeStyles({
   field: {
-    marginTop: 20,
-    marginBottom: 20,
+    
     display: "block",
     color: "#CAFE48",
   },

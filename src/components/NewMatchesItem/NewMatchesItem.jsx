@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Grid, CardMedia, Card, CardContent, Typography, Button } from '@mui/material';
 
 function NewMatchesItem(props) {
   const writer = useSelector((store) => store.writer);
@@ -29,32 +30,40 @@ function NewMatchesItem(props) {
     dispatch({
       type: "REMOVE_MATCH",
       payload: props.match.id
-    });
+    }); //something wrong with this dispatch, or at least it triggers a matches.map error
+    //that i need to get to the bottom of
   };
 
   return (
-    <div>
-      <h2>{heading}</h2>
-      <section className="profile" key={props.match.id}>
-        <div>
-          <p>Name: {props.match.name}</p>
-          <br />
-          <img src={props.match.image} />
-          <br />
-          <p>Bio: {props.match.bio} </p>
-          <br />
-          <p>Work In Progress: {props.match.wip}</p>
-          <br />
-          <p>Genre</p>
-          <br />
-          <p>Available For: available placeholder</p>
-          <br />
-          <p>Seeking: seeking placeholder</p>
-          <button onClick={checkForMatch}>Match With This Writer!</button>
-          <button onClick={removeMatch}>Pass On This Writer</button>
-        </div>
-      </section>
-    </div>
+      <Grid item>
+      <Card elevation={2}>
+        <CardContent>
+        <Typography variant="h4">{heading}</Typography>
+        <br />
+        <Typography variant="h5">{props.match.name}</Typography>
+        </CardContent>
+        <CardMedia
+        component="img"
+        image={props.match.image}
+        alt="matched writer"
+      />
+        <CardContent>
+        <Typography variant="body1">{props.match.bio}</Typography>
+        <br />
+        <Typography variant="body2">Work in Progress: {props.match.wip}</Typography>
+        <br />
+        <Typography variant="body2">Genres: {props.match.genres}</Typography>
+        </CardContent>
+        <Button variant="outlined" onClick={checkForMatch}>
+        Match With This Writer!
+        </Button>
+        <Button variant="outlined" onClick={removeMatch}>
+        Pass on This Writer
+        </Button>
+      </Card>
+      </Grid>
+
+
   );
 }
 

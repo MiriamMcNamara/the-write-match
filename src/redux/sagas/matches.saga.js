@@ -63,9 +63,7 @@ function* checkMatches(action) {
 
 function* confirmMatch(action) {
   try {
-    const response = yield axios.put(
-      `/api/matches/${action.payload.initiator}`
-    );
+    const response = yield axios.put("/api/matches/", action.payload);
     yield put({ type: "SET_MATCHES", payload: response.data });
     yield put({ type: "FETCH_MATCHES" });
   } catch (error) {

@@ -64,10 +64,10 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 /**
  * PUT route for updating a match to 'confirmed' status
  */
-router.put("/:id", rejectUnauthenticated, (req, res) => {
+router.put("/", rejectUnauthenticated, (req, res) => {
   // PUT route code here
   const query = `UPDATE matches SET confirmed=TRUE
-    WHERE approver_id=${req.params.id}`;
+    WHERE approver_id=${req.body.approver} and initiator_id=${req.body.initiator}`;
   pool
     .query(query)
     .then((results) => {

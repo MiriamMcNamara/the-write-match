@@ -18,55 +18,56 @@ function SelectedMatchesItem(props) {
   return (
   props.selected.confirmed ? (
     <Grid item key={props.selected.id}>
-      <Card elevation={2}>
-        <CardContent>
-        <Typography variant="h4">{heading}</Typography>
-        <br />
-        <Typography variant="h5">{props.selected.name}</Typography>
-        </CardContent>
-        <CardMedia
-        component="img"
-        image={props.selected.image}
-        alt="matched writer"
-      />
-        <CardContent>
-        <Typography variant="body1">{props.selected.bio}</Typography>
-        <br />
-        <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
-        <br />
-        <Typography variant="body2">Genres: {props.selected.genres}</Typography>
-        </CardContent>
-        <Button variant="outlined">
-        Contact This Writer!
-        </Button>
-      </Card>
-      </Grid>
+    <Card elevation={2}>
+      <CardContent>
+      <Typography variant="h4">{heading}</Typography>
+      <br />
+      <Typography variant="h5">CONFIRMED MATCH!</Typography>
+      <Typography variant="h5">{props.selected.name}</Typography>
+      </CardContent>
+      <CardMedia
+      component="img"
+      image={props.selected.image}
+      alt="matched writer"
+    />
+      <CardContent>
+      <Typography variant="body1">{props.selected.bio}</Typography>
+      <br />
+      <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
+      <br />
+      <Typography variant="body2">Genres: {props.selected.genres}</Typography>
+      </CardContent>
+      <Button variant="outlined" onClick={deleteSelected}>
+      Remove this Match
+      </Button>
+    </Card>
+    </Grid>
       ) : (
-
-      <Grid item key={props.selected.id}>
-      <Card elevation={2}>
-        <CardContent>
-        <Typography variant="h4">{heading}</Typography>
-        <br />
-        <Typography variant="h5">{props.selected.name}</Typography>
-        </CardContent>
-        <CardMedia
-        component="img"
-        image={props.selected.image}
-        alt="matched writer"
-      />
-        <CardContent>
-        <Typography variant="body1">{props.selected.bio}</Typography>
-        <br />
-        <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
-        <br />
-        <Typography variant="body2">Genres: {props.selected.genres}</Typography>
-        </CardContent>
-        <Button variant="outlined" onClick={deleteSelected}>
-        Pass on This Writer
-        </Button>
-      </Card>
-      </Grid>
+<Grid item key={props.selected.id}>
+<Card elevation={2}>
+  <CardContent>
+  <Typography variant="h4">{heading}</Typography>
+  <br />
+  <Typography variant="h5">AWAITING CONFIRMATION</Typography>
+  <Typography variant="h5">{props.selected.name}</Typography>
+  </CardContent>
+  <CardMedia
+  component="img"
+  image={props.selected.image}
+  alt="matched writer"
+/>
+  <CardContent>
+  <Typography variant="body1">{props.selected.bio}</Typography>
+  <br />
+  <Typography variant="body2">Work in Progress: {props.selected.wip}</Typography>
+  <br />
+  <Typography variant="body2">Genres: {props.selected.genres}</Typography>
+  </CardContent>
+  <Button variant="outlined">
+  Contact This Writer!
+  </Button>
+</Card>
+</Grid>
       )
 
   );

@@ -6,6 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { Grid, Container } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 
 function NewNav(props) {
@@ -21,13 +22,15 @@ function NewNav(props) {
 
 
   const user = useSelector((store) => store.user);
-  const [heading, setHeading] = useState('NewNav');
+  const [heading, setHeading] = useState('The Write Match');
 
   return (
     <Container>
-      <Grid container>
-    <div>
-      <h2>{heading}</h2>
+      <Grid container paddingTop="50px" paddingBottom="70px">
+        <Grid item xs={9}>
+      <Typography variant="h3">{heading}</Typography>
+      </Grid>
+      <Grid item xs={3}>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -35,8 +38,9 @@ function NewNav(props) {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Dashboard
+        Menu
       </Button>
+      </Grid>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -48,25 +52,24 @@ function NewNav(props) {
       >
 {user.id === null &&
           // If there's no user, show login/registration links
-          <MenuItem onClick={handleClose}><Link className="navLink" to="/login">
+          <MenuItem onClick={handleClose}><Link to="/login">
             Login / Register
           </Link></MenuItem>
         }
 
 {user.id && (
   <>
-        <MenuItem onClick={handleClose}><Link className="navLink" to="/profile">My Profile</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className="navLink" to="/newmatches">See New Matches</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link className="navLink" to="/selectedmatches">Current Matches</Link></MenuItem>
-        <MenuItem onClick={handleClose}><LogOutButton className="navLink" /></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/profile">My Profile</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/newmatches">See New Matches</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/selectedmatches">Current Matches</Link></MenuItem>
+        <MenuItem onClick={handleClose}><LogOutButton /></MenuItem>
         </>
 )}
 
-        <MenuItem onClick={handleClose}><Link className="navLink" to="/about">
+        <MenuItem onClick={handleClose}><Link to="/about">
           About
         </Link></MenuItem>
       </Menu>
-    </div>
     </Grid>
     </Container>
   );

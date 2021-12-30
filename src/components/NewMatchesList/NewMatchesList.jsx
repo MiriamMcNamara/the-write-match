@@ -32,7 +32,7 @@ function NewMatchesList(props) {
   return (
     <Container>
       <Grid container spacing={3}>
-        <Typography variant="h3" color="primary">{heading}</Typography>
+        <Typography variant="h4" color="primary">{heading}</Typography>
         {matches.map((match) => (
         <NewMatchesItem match={match} />
       ))}

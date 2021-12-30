@@ -25,7 +25,7 @@ function* filterMatches(action) {
           } //end if statement
           else if (
             matches.data[i].id == selected.data[j].initiator_id &&
-            selected.data[j].confirmed == false
+            selected.data[j].confirmed == true
           ) {
             hasMatches = true;
             console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].initiator_id, 'and selected.data[j].confirmed==', selected.data[j].confirmed, 'so hasMatches turned true' );
@@ -71,7 +71,7 @@ function* checkMatches(action) {
 function* confirmMatch(action) {
   try {
     const response = yield axios.put("/api/matches/", action.payload);
-    yield put({ type: "SET_MATCHES", payload: response.data });
+    // yield put({ type: "SET_MATCHES", payload: response.data });
   } catch (error) {
     console.log("writer put request failed", error);
   }
@@ -82,31 +82,31 @@ function* postMatch(action) {
   try {
     const response = yield axios.post("/api/matches", action.payload);
     console.log("adding match: ", response.data);
-    yield put({ type: "FETCH_MATCHES" });
+    // yield put({ type: "FETCH_MATCHES" });
   } catch (err) {
     alert("no");
     console.log(err);
   }
 }
 
-function* fetchSelected(action) {
-  console.log("--------> in fetchSelected", action.payload);
-  try {
-    const response = yield axios.get(`/api/selected/${action.payload}`);
-    yield put({ type: "SET_SELECTED", payload: response.data });
-  } catch (err) {
-    alert("no");
-    console.log(err);
-  }
-}
+// function* fetchSelected(action) {
+//   console.log("--------> in fetchSelected", action.payload);
+//   try {
+//     const response = yield axios.get(`/api/selected/${action.payload}`);
+//     yield put({ type: "SET_SELECTED", payload: response.data });
+//   } catch (err) {
+//     alert("no");
+//     console.log(err);
+//   }
+// }
 
 function* deleteSelected(action) {
   try {
     const response = yield axios.delete(`/api/selected/${action.payload}`);
 
-    yield put({ type: "SET_SELECTED"});
+    // yield put({ type: "SET_SELECTED"});
   } catch (error) {
-    console.log("writer get request failed", error);
+    console.log("delete selected request failed", error);
   }
 }
 
@@ -116,7 +116,7 @@ function* matchesSaga() {
   yield takeLatest("CONFIRM_MATCH", confirmMatch);
   yield takeLatest("FILTER_MATCHES", filterMatches);
   yield takeLatest("DELETE_SELECTED", deleteSelected);
-  yield takeLatest("FETCH_SELECTED", fetchSelected);
+  // yield takeLatest("FETCH_SELECTED", fetchSelected);
 }
 
 export default matchesSaga;

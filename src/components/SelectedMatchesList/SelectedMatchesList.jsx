@@ -8,11 +8,27 @@ function SelectedMatchesList(props) {
 
   const selected = useSelector((store) => store.selected);
   const writer = useSelector((store) => store.writer);
+  const user = useSelector((store) => store.user);
+  const seeking = useSelector((store) => store.seeking);
+  const availablefor = useSelector((store) => store.availablefor);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState('Current Matches');
 
+  // useEffect(() => {
+  //   // dispatch({ type: "FETCH_SELECTED", payload: writer[0].id });
+   
+  // }, []);
+
   useEffect(() => {
-    dispatch({ type: "FETCH_SELECTED", payload: writer[0].id });
+    dispatch({
+      type: "FILTER_MATCHES",
+      payload: {
+        writer: writer[0].id,
+        seeking: seeking[0].seeking_id,
+        availablefor: availablefor[0].available_for_id,
+        user: user.id,
+      },
+    });
   }, []);
 
 

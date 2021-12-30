@@ -3,7 +3,7 @@ const matchesReducer = (state = [], action) => {
     case 'SET_MATCHES':
       return action.payload;
     case 'REMOVE_MATCH':
-      return state-action.payload;
+      return state.splice( state.indexOf( action.payload ), 1 );
     default:
       return state;
   }

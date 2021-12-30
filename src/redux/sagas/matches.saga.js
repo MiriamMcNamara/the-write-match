@@ -23,11 +23,12 @@ function* filterMatches(action) {
             hasMatches = true;
             console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches turned true' );
           } //end if statement
-          if (
-            matches.data[i].id == selected.data[j].initiator_id
+          else if (
+            matches.data[i].id == selected.data[j].initiator_id &&
+            selected.data[j].confirmed == false
           ) {
             hasMatches = true;
-            console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].initiator_id, 'so hasMatches turned true' );
+            console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].initiator_id, 'and selected.data[j].confirmed==', selected.data[j].confirmed, 'so hasMatches turned true' );
           } //end if statement
           else{ console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches remains false') }
         } //end j loop
@@ -71,7 +72,6 @@ function* confirmMatch(action) {
   try {
     const response = yield axios.put("/api/matches/", action.payload);
     yield put({ type: "SET_MATCHES", payload: response.data });
-    yield put({ type: "FETCH_MATCHES" });
   } catch (error) {
     console.log("writer put request failed", error);
   }
@@ -104,7 +104,7 @@ function* deleteSelected(action) {
   try {
     const response = yield axios.delete(`/api/selected/${action.payload}`);
 
-    yield put({ type: "SET_SELECTED", payload: response.data });
+    yield put({ type: "SET_SELECTED"});
   } catch (error) {
     console.log("writer get request failed", error);
   }

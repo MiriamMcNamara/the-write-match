@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Container, Typography, TextField, Button } from "@mui/material";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import { makeStyles } from "@mui/styles";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Grid,
-  Paper,
-} from "@mui/material";
-import { normalizeQueryConfig } from "pg/lib/utils";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 
 const useStyles = makeStyles({
   field: {

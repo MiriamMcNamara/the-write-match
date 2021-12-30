@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, CardMedia, Card, CardContent, Typography, Button } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
 
 function NewMatchesItem(props) {
   const writer = useSelector((store) => store.writer);
@@ -47,13 +53,13 @@ function NewMatchesItem(props) {
 
   return (
       <Grid item key={props.match.id}>
-      <Card elevation={2}>
+      <Card elevation={2} sx={{marginTop: "20px"}}>
         <CardContent>
         <Typography variant="h4">{heading}</Typography>
         <br />
         <Typography variant="h5">{props.match.name}</Typography>
         </CardContent>
-        <CardMedia
+        <CardMedia sx={{ border: 5, borderColor: "secondary.main" }}
         component="img"
         image={props.match.image}
         alt="matched writer"

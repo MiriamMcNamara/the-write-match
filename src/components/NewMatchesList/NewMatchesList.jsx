@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NewMatchesItem from "../NewMatchesItem/NewMatchesItem";
-import { Typography, Container, Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 function NewMatchesList(props) {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ function NewMatchesList(props) {
   const matches = useSelector((store) => store.matches);
   const selected = useSelector((store) => store.selected);
 
-  const [heading, setHeading] = useState("See New Matches");
+  const [heading, setHeading] = useState("New Matches!");
 
   useEffect(() => {
     dispatch({
@@ -32,10 +34,12 @@ function NewMatchesList(props) {
   return (
     <Container>
       <Grid container spacing={3}>
-        <Typography variant="h4" color="primary">{heading}</Typography>
+      <Grid item xs={12}>
+        <Typography variant="h4" color="primary" textAlign="center">{heading}</Typography>
         {matches.map((match) => (
         <NewMatchesItem match={match} />
       ))}
+      </Grid>
       </Grid>
     </Container>
   );

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, Typography, Container, Paper, Button } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
 
 function ViewProfile(props) {
   const dispatch = useDispatch();
@@ -19,25 +22,30 @@ function ViewProfile(props) {
 
   return (
     <Container>
-      <Grid container padding="10px">
-        <Paper padding="10px">
-          <Grid item xs={12} padding="10px">
-            <Typography
+      <Grid container >
+      <Grid item xs={12}>
+      <Typography
               variant="h4"
               color="primary"
               component="h2"
               gutterBottom
+              textAlign="center"
             >
               {heading}
             </Typography>
-          </Grid>
+            </Grid>
+        <Paper padding="10px">
+          
+      
           {writer.map((writer) => (
             <Grid item className="profile" key={writer.id} padding="10px">
               <Typography variant="h4" fontStyle="italic" color="secondary">
                 {writer.name}
               </Typography>
               <br />
-              <img src={writer.image} />
+              <Grid item sx={{ border: 5, borderColor: "secondary.main" }}>
+              <img src={writer.image}/>
+              </Grid>
               <br />
               <br />
               <Typography>{writer.bio}</Typography>

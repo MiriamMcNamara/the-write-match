@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import SelectedMatchesItem from '../SelectedMatchesItem/SelectedMatchesItem';
-import { Container, Grid, Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 
 function SelectedMatchesList(props) {
@@ -39,10 +41,12 @@ function SelectedMatchesList(props) {
 
     <Container>
     <Grid container spacing={3}>
-      <Typography variant="h4" color="primary">{heading}</Typography>
+    <Grid item xs={12}>
+      <Typography variant="h4" color="primary" textAlign="center">{heading}</Typography>
       {selected.map((selected) => (
       <SelectedMatchesItem selected={selected} />
     ))}
+    </Grid>
     </Grid>
   </Container>
   )

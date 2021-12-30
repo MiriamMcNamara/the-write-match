@@ -26,7 +26,6 @@ import SelectedMatchesList from '../SelectedMatchesList/SelectedMatchesList';
 import NewNav from '../NewNav/NewNav';
 
 import './App.css';
-import { autocompleteClasses } from '@mui/material';
 
 const theme =createTheme({
   palette:{

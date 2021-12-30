@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, CardMedia, Card, CardContent, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -44,7 +48,7 @@ function SelectedMatchesItem(props) {
   return (
   props.selected.confirmed ? (
     <Grid item key={props.selected.id}>
-    <Card elevation={2}>
+    <Card elevation={2} sx={{marginTop: "20px"}}>
       <CardContent>
       <Typography variant="h4">{heading}</Typography>
       <br />
@@ -52,6 +56,7 @@ function SelectedMatchesItem(props) {
       <Typography variant="h5">{props.selected.name}</Typography>
       </CardContent>
       <CardMedia
+      sx={{ border: 5, borderColor: "secondary.main" }}
       component="img"
       image={props.selected.image}
       alt="matched writer"
@@ -99,7 +104,7 @@ function SelectedMatchesItem(props) {
     </Grid>
       ) : (
 <Grid item key={props.selected.id}>
-<Card elevation={2}>
+<Card elevation={2} sx={{marginTop: "20px"}}>
   <CardContent>
   <Typography variant="h4">{heading}</Typography>
   <br />
@@ -110,6 +115,7 @@ function SelectedMatchesItem(props) {
   component="img"
   image={props.selected.image}
   alt="matched writer"
+  sx={{ border: 5, borderColor: "secondary.main" }}
 />
   <CardContent>
   <Typography variant="body1">{props.selected.bio}</Typography>

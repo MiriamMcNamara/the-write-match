@@ -37,7 +37,10 @@ function SelectedMatchesItem(props) {
       <br />
       <Typography variant="body2">Genres: {props.selected.genres}</Typography>
       </CardContent>
-      <Button variant="outlined" onClick={deleteSelected}>
+      <Button variant="contained" color="secondary">
+  Contact This Writer!
+  </Button>
+  <Button variant="outlined" onClick={deleteSelected}>
       Remove this Match
       </Button>
     </Card>
@@ -63,9 +66,9 @@ function SelectedMatchesItem(props) {
   <br />
   <Typography variant="body2">Genres: {props.selected.genres}</Typography>
   </CardContent>
-  <Button variant="outlined">
-  Contact This Writer!
-  </Button>
+  <Button variant="outlined" onClick={deleteSelected}>
+      Remove this Match
+      </Button>
 </Card>
 </Grid>
       )

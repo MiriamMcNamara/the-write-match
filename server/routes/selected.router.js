@@ -11,10 +11,14 @@ const {
 router.get("/:id", rejectUnauthenticated, (req, res) => {
   const query = `SELECT matches.id AS matches_id, * FROM matches
   JOIN writer ON approver_id = writer.id
-  WHERE initiator_id = ${req.params.id}`;
+  WHERE initiator_id = ${req.params.id}
+  UNION
+  SELECT matches.id AS matches_id, * FROM matches
+   JOIN writer ON initiator_id = writer.id
+    WHERE approver_id = ${req.params.id}`;
   pool
     .query(query)
-    .then((result) => {
+    .then((result)=> {
       console.log("selected GET hit");
       res.send(result.rows);
     })

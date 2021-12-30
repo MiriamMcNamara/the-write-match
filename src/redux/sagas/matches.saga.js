@@ -8,7 +8,7 @@ function* filterMatches(action) {
       `/api/matches/?writer=${action.payload.writer}&seeking=${action.payload.seeking}&availablefor=${action.payload.availablefor}`
     );
     try {
-      const selected = yield axios.get(`/api/selected/${action.payload.user}`);
+      const selected = yield axios.get(`/api/selected/${action.payload.writer}`);
       console.log(matches.data);
       console.log(selected.data);
       let matchesArray = [];
@@ -22,6 +22,12 @@ function* filterMatches(action) {
           ) {
             hasMatches = true;
             console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches turned true' );
+          } //end if statement
+          if (
+            matches.data[i].id == selected.data[j].initiator_id
+          ) {
+            hasMatches = true;
+            console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].initiator_id, 'so hasMatches turned true' );
           } //end if statement
           else{ console.log("in loop, my potential match is", matches.data[i].id, 'my selected match is', selected.data[j].approver_id, 'so hasMatches remains false') }
         } //end j loop
@@ -83,6 +89,17 @@ function* postMatch(action) {
   }
 }
 
+function* fetchSelected(action) {
+  console.log("--------> in fetchSelected", action.payload);
+  try {
+    const response = yield axios.get(`/api/selected/${action.payload}`);
+    yield put({ type: "SET_SELECTED", payload: response.data });
+  } catch (err) {
+    alert("no");
+    console.log(err);
+  }
+}
+
 function* deleteSelected(action) {
   try {
     const response = yield axios.delete(`/api/selected/${action.payload}`);
@@ -99,6 +116,7 @@ function* matchesSaga() {
   yield takeLatest("CONFIRM_MATCH", confirmMatch);
   yield takeLatest("FILTER_MATCHES", filterMatches);
   yield takeLatest("DELETE_SELECTED", deleteSelected);
+  yield takeLatest("FETCH_SELECTED", fetchSelected);
 }
 
 export default matchesSaga;

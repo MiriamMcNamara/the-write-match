@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Grid, CardMedia, Card, CardContent, Typography, Button } from '@mui/material';
 
 function SelectedMatchesItem(props) {
-  const store = useSelector((store) => store);
+  const selected = useSelector((store) => store.selected);
+  const writer = useSelector((store) => store.writer);
+  const user = useSelector((store) => store.user);
+  const seeking = useSelector((store) => store.seeking);
+  const availablefor = useSelector((store) => store.availablefor);
   const [heading, setHeading] = useState("Current Match!");
   const dispatch = useDispatch();
 
@@ -11,7 +15,13 @@ function SelectedMatchesItem(props) {
     console.log(" in deleteSelected");
     dispatch({
       type: "DELETE_SELECTED",
-      payload: props.selected.matches_id,
+      payload: {
+      match: props.selected.matches_id,
+      writer: writer[0].id,
+        seeking: seeking[0].seeking_id,
+        availablefor: availablefor[0].available_for_id,
+        user: user.id
+      }
     });
   };
 

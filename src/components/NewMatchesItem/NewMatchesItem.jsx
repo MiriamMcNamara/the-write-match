@@ -4,6 +4,10 @@ import { Grid, CardMedia, Card, CardContent, Typography, Button } from '@mui/mat
 
 function NewMatchesItem(props) {
   const writer = useSelector((store) => store.writer);
+  const user = useSelector((store) => store.user);
+  const availablefor = useSelector((store) => store.availablefor);
+  const seeking = useSelector((store) => store.seeking);
+  const matches = useSelector((store) => store.matches);
   const dispatch = useDispatch();
   const [heading, setHeading] = useState("NewMatch!");
 
@@ -19,20 +23,27 @@ function NewMatchesItem(props) {
       payload: {
         initiator: props.match.id,
         approver: writer[0].id,
+        writer: writer[0].id,
+        seeking: seeking[0].seeking_id,
+        availablefor: availablefor[0].available_for_id,
+        user: user.id
       },
     });
+    // dispatch({
+    //   type: "REMOVE_MATCH",
+    //   payload: props.match.id
+    // }); 
   };
 
-  const removeMatch = () => {
-    console.log("in removeMatch");
-    //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard
-    // although it won't last through a page refresh probably
-    dispatch({
-      type: "REMOVE_MATCH",
-      payload: props.match.id
-    }); //something wrong with this dispatch, or at least it triggers a matches.map error
-    //that i need to get to the bottom of
-  };
+  // const removeMatch = () => {
+  //   console.log("in removeMatch");
+  //   //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard
+  //   // although it won't last through a page refresh probably
+  //   dispatch({
+  //     type: "REMOVE_MATCH",
+  //     payload: props.match.id
+  //   }); 
+  // };
 
   return (
       <Grid item key={props.match.id}>
@@ -57,9 +68,9 @@ function NewMatchesItem(props) {
         <Button variant="outlined" onClick={checkForMatch}>
         Match With This Writer!
         </Button>
-        <Button variant="outlined" onClick={removeMatch}>
+        {/* <Button variant="outlined" onClick={removeMatch}>
         Pass on This Writer
-        </Button>
+        </Button> */}
       </Card>
       </Grid>
 

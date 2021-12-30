@@ -63,6 +63,7 @@ function* checkMatches(action) {
       console.log("in ELSE----------->", response.data);
       yield put({ type: "CONFIRM_MATCH", payload: action.payload });
     }
+    yield put({ type: "FILTER_MATCHES", payload: action.payload });
   } catch (error) {
     console.log("existing matches get request failed", error);
   }
@@ -102,9 +103,9 @@ function* postMatch(action) {
 
 function* deleteSelected(action) {
   try {
-    const response = yield axios.delete(`/api/selected/${action.payload}`);
+    const response = yield axios.delete(`/api/selected/${action.payload.match}`);
 
-    // yield put({ type: "SET_SELECTED"});
+    yield put({ type: "FILTER_MATCHES", payload: action.payload });
   } catch (error) {
     console.log("delete selected request failed", error);
   }

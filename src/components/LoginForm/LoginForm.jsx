@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -28,17 +31,23 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    
+      <Grid container padding="10px" backgroundColor="lightblue" sx={{ border: 5, borderColor: "secondary.main" }}>
+    <form  onSubmit={login}>
+
+      <Grid item xs={12} >
+      <Typography variant="h4" marginLeft="10px">Login</Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
-        <label htmlFor="username">
+      </Grid>
+
+      <Grid item>
+        <label htmlFor="username"><Typography margin="10px">
           Username:
-          <input
+          </Typography><TextField 
             type="text"
             name="username"
             required
@@ -46,11 +55,11 @@ function LoginForm() {
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
-      </div>
-      <div>
-        <label htmlFor="password">
+      </Grid>
+      <Grid item>
+        <label htmlFor="password"><Typography margin="10px">
           Password:
-          <input
+          </Typography><TextField 
           id="password"
             type="password"
             name="password"
@@ -59,11 +68,15 @@ function LoginForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-      </div>
-      <div>
+      </Grid>
+      
+      <Grid item paddingTop="10px">
         <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
+      </Grid>
+      
     </form>
+    </Grid>
+  
   );
 }
 

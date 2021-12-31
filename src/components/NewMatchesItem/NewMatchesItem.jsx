@@ -35,21 +35,7 @@ function NewMatchesItem(props) {
         user: user.id
       },
     });
-    // dispatch({
-    //   type: "REMOVE_MATCH",
-    //   payload: props.match.id
-    // }); 
   };
-
-  // const removeMatch = () => {
-  //   console.log("in removeMatch");
-  //   //send a dispatch that removes the selected match from the store and the DOM, shouldn't be too hard
-  //   // although it won't last through a page refresh probably
-  //   dispatch({
-  //     type: "REMOVE_MATCH",
-  //     payload: props.match.id
-  //   }); 
-  // };
 
   return (
       <Grid item key={props.match.id}>
@@ -74,9 +60,6 @@ function NewMatchesItem(props) {
         <Button variant="outlined" onClick={checkForMatch}>
         Match With This Writer!
         </Button>
-        {/* <Button variant="outlined" onClick={removeMatch}>
-        Pass on This Writer
-        </Button> */}
       </Card>
       </Grid>
 

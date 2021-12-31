@@ -12,7 +12,7 @@ function AboutPage() {
     <Container>
     <Grid container>
       <Grid item sx={{ border: 5, borderColor: "secondary.main" }}>
-      <img src='/images/iwritebooks.JPG' alt="creator of The Write Match" />
+      <img src='/images/iwritebooks.JPG' alt="Miriam, creator of The Write Match" />
       </Grid>
       <Grid item>
       <br />

@@ -66,23 +66,23 @@ function NewNav(props) {
       >
 {user.id === null &&
           // If there's no user, show login/registration links
-          <MenuItem onClick={handleClose}><Link to="/login">
+          <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="overline" color="primary">
             Login / Register
-          </Link></MenuItem>
+            </Typography></Link></MenuItem>
         }
 
 {user.id && (
   <>
-        <MenuItem className={classes.navItem} onClick={handleClose}><Link  to="/profile">My Profile</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link  to="/newmatches">See New Matches</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link  to="/selectedmatches">Current Matches</Link></MenuItem>
+        <MenuItem className={classes.navItem} onClick={handleClose}><Link  to="/profile"><Typography variant="overline" color="primary">My Profile</Typography></Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/newmatches"><Typography variant="overline" color="primary">See New Matches</Typography></Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/selectedmatches"><Typography variant="overline" color="primary">Current Matches</Typography></Link></MenuItem>
         <MenuItem onClick={handleClose}><LogOutButton /></MenuItem>
         </>
 )}
 
-        <MenuItem onClick={handleClose}><Link to="/about">
+        <MenuItem onClick={handleClose}><Link to="/about"><Typography variant="overline" color="primary">
           About
-        </Link></MenuItem>
+          </Typography></Link></MenuItem>
       </Menu>
     </Grid>
     </Container>

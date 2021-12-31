@@ -1,4 +1,7 @@
 import React from 'react';
+import Container from '@mui/material/Container';
+import Grid from "@mui/material/Grid";
+import Button from '@mui/material/Button';
 
 import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -7,21 +10,26 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <Container>
+
       <RegisterForm />
 
-      <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
+      <Grid container padding="20px">
+        <Grid item xs={4}></Grid>
+        <Grid item xs={4}>
+        <Button 
+          variant="contained"
           onClick={() => {
             history.push('/login');
           }}
         >
           Login
-        </button>
-      </center>
-    </div>
+        </Button>
+        </Grid>
+        <Grid item xs={4}></Grid>
+      </Grid>
+
+    </Container>
   );
 }
 

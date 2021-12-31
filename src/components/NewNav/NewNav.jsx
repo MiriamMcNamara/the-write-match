@@ -81,8 +81,11 @@ function NewNav(props) {
 )}
 
         <MenuItem onClick={handleClose}><Link to="/about"><Typography variant="overline" color="primary">
-          About
+          About The Write Match
           </Typography></Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="overline" color="primary">
+            Login / Register
+            </Typography></Link></MenuItem>
       </Menu>
     </Grid>
     </Container>

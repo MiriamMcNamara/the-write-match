@@ -22,6 +22,9 @@ function SelectedMatchesList(props) {
   // }, []);
 
   useEffect(() => {
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
     dispatch({
       type: "FILTER_MATCHES",
       payload: {
@@ -31,9 +34,6 @@ function SelectedMatchesList(props) {
         user: user.id,
       },
     });
-    dispatch({ type: "FETCH_WRITER", payload: user.id });
-    dispatch({ type: "FETCH_SEEKING", payload: user.id });
-    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
   }, []);
 
 

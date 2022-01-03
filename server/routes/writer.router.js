@@ -36,7 +36,7 @@ WHERE user_id = ${req.params.id}`;
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get writer", err);
+      console.log("ERROR: Get writer seeking", err);
       res.sendStatus(500);
     });
 });
@@ -56,7 +56,7 @@ WHERE user_id = ${req.params.id}`;
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get writer", err);
+      console.log("ERROR: Get writer available for", err);
       res.sendStatus(500);
     });
 });

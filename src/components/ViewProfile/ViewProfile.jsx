@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
+import Box from '@mui/material/Box';
 
 function ViewProfile(props) {
   const dispatch = useDispatch();
@@ -43,8 +44,10 @@ function ViewProfile(props) {
                 {writer.name}
               </Typography>
               <br />
-              <Grid item sx={{ border: 5, borderColor: "secondary.main" }}>
+              <Grid item >
+                <Box sx={{ border: 5, borderColor: "secondary.main" }}>
               <img src={writer.image}/>
+              </Box>
               </Grid>
               <br />
               <br />
@@ -60,14 +63,14 @@ function ViewProfile(props) {
     
           {availableFor.map((availableFor) => (
             <Grid item className="availableFor" key={writer.id} padding="10px">
-              <Typography variant="h6">Available For:</Typography>
+              <Typography variant="h6">What I'm Available For:</Typography>
               <Typography>{availableFor.skill}</Typography>
             </Grid>
           ))}
   
           {seeking.map((seeking) => (
             <Grid item className="seeking" key={writer.id} padding="10px">
-              <Typography variant="h6">Seeking:</Typography>
+              <Typography variant="h6">What I'm Seeking:</Typography>
               <Typography>{seeking.skill}</Typography>
             </Grid>
           ))}

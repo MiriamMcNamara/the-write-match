@@ -187,7 +187,6 @@ function CreateProfile(props) {
           label="What Genres Do You Write In?"
           variant="outlined"
           color="secondary"
-          marginBottom="20"
           fullWidth
           onChange={(event) => handleGenres(event)}
         />
@@ -196,7 +195,7 @@ function CreateProfile(props) {
         <Grid item xs={12} padding="10px">
           <FormControl>
             <InputLabel color="secondary">
-              What Is Your Primary Skill?
+              What Are You Most Available For?
             </InputLabel>
             <Select
               className={classes.select}
@@ -210,10 +209,11 @@ function CreateProfile(props) {
               <MenuItem value={1}>Developmental Editing</MenuItem>
               <MenuItem value={2}>Copy/Line Editing</MenuItem>
               <MenuItem value={3}>Accountability Buddy</MenuItem>
-              <MenuItem value={4}>Manuscript Swap</MenuItem>
-              <MenuItem value={5}>World/Building</MenuItem>
-              <MenuItem value={6}>Publishing Strategy</MenuItem>
-              <MenuItem value={7}>Socializing</MenuItem>
+              <MenuItem value={4}>Critique Group Member</MenuItem>
+              <MenuItem value={5}>Manuscript Swap</MenuItem>
+              <MenuItem value={6}>World-Building (Fantasy/Sci-Fi)</MenuItem>
+              <MenuItem value={7}>Publishing Strategy</MenuItem>
+              <MenuItem value={8}>Socializing/Networking</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -221,7 +221,7 @@ function CreateProfile(props) {
         <Grid item xs={12} padding="10px">
           <FormControl>
             <InputLabel color="secondary">
-              What Are You Seeking on This Site?
+              What Are You Primarly Seeking?
             </InputLabel>
             <Select
               className={classes.select}
@@ -235,10 +235,11 @@ function CreateProfile(props) {
               <MenuItem value={1}>Developmental Editing</MenuItem>
               <MenuItem value={2}>Copy/Line Editing</MenuItem>
               <MenuItem value={3}>Accountability Buddy</MenuItem>
-              <MenuItem value={4}>Manuscript Swap</MenuItem>
-              <MenuItem value={5}>World/Building</MenuItem>
-              <MenuItem value={6}>Publishing Strategy</MenuItem>
-              <MenuItem value={7}>Socializing</MenuItem>
+              <MenuItem value={4}>Critique Group</MenuItem>
+              <MenuItem value={5}>Manuscript Swap</MenuItem>
+              <MenuItem value={6}>World-Building (Fantasy/Sci-Fi)</MenuItem>
+              <MenuItem value={7}>Publishing Strategy</MenuItem>
+              <MenuItem value={8}>Socializing/Networking</MenuItem>
             </Select>
           </FormControl>
         </Grid>

@@ -38,7 +38,7 @@ function RegisterForm() {
       </Grid>
       <Grid item xs={12} >
         <label htmlFor="username"><Typography margin="10px">
-          Username:
+          Create a Username:
           </Typography><TextField
             type="text"
             name="username"
@@ -50,7 +50,7 @@ function RegisterForm() {
       </Grid>
       <Grid item >
         <label htmlFor="password"><Typography margin="10px">
-          Password:
+          Create a Password:
           </Typography><TextField
             type="password"
             name="password"

@@ -68,7 +68,7 @@ function SelectedMatchesItem(props) {
       <br />
       <Typography variant="body2">Genres: {props.selected.genres}</Typography>
       </CardContent>
-      <Button variant="contained" color="secondary" onClick={handleClickOpen}>
+      <Button variant="contained" color="secondary" gutterBottom onClick={handleClickOpen}>
   Contact This Writer!
   </Button>
   <Dialog

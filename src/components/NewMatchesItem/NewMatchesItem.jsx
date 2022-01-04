@@ -39,13 +39,11 @@ function NewMatchesItem(props) {
 
   return (
       <Grid item key={props.match.id}>
-      <Card elevation={2} sx={{marginTop: "20px"}}>
-        <CardContent>
-        <Typography variant="h4">{heading}</Typography>
-        <br />
-        <Typography variant="h5">{props.match.name}</Typography>
+      <Card elevation={2} sx={{marginTop: "20px", border: 5, borderColor: "secondary.main" }}>
+        <CardContent sx={{ backgroundColor: 'lightBlue' }}>
+        <Typography textAlign="center" variant="h4" fontStyle="italic">{props.match.name}</Typography>
         </CardContent>
-        <CardMedia sx={{ border: 5, borderColor: "secondary.main" }}
+        <CardMedia sx={{ borderTop: 5, borderBottom: 5, borderColor: "secondary.main" }}
         component="img"
         image={props.match.image}
         alt="matched writer"
@@ -57,9 +55,17 @@ function NewMatchesItem(props) {
         <br />
         <Typography variant="body2">Genres: {props.match.genres}</Typography>
         </CardContent>
+        <CardContent>
+        <Grid container>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={8} >
         <Button variant="outlined" onClick={checkForMatch}>
         Match With This Writer!
         </Button>
+        </Grid>
+        <Grid item xs={2}></Grid>
+        </Grid>
+        </CardContent>
       </Card>
       </Grid>
 

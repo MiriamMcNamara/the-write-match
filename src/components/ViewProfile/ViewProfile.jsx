@@ -19,14 +19,14 @@ function ViewProfile(props) {
   const seeking = useSelector((store) => store.seeking);
   const availableFor = useSelector((store) => store.availablefor);
   const user = useSelector((store) => store.user);
-  const [heading, setHeading] = useState("My Profile");
+  const [heading, setHeading] = useState("Profile");
 
   return (
     <Container>
       <Grid container >
       <Grid item xs={12}>
       <Typography
-              variant="h4"
+              variant="h3"
               color="primary"
               component="h2"
               gutterBottom
@@ -40,7 +40,7 @@ function ViewProfile(props) {
       
           {writer.map((writer) => (
             <Grid item className="profile" key={writer.id} padding="10px">
-              <Typography variant="h4" fontStyle="italic" color="secondary">
+              <Typography variant="h4" fontStyle="italic" textAlign="center">
                 {writer.name}
               </Typography>
               <br />

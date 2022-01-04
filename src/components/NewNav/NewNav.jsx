@@ -40,7 +40,7 @@ function NewNav(props) {
       sx={{ border: 5, borderColor: "secondary.main", backgroundColor: "lightBlue" }}
       marginBottom="20px">
         <Grid item xs={9}>
-      <Typography sx={{ fontStyle: 'italic' }} variant="h3" color="primary">{heading}</Typography>
+      <Typography sx={{ fontStyle: 'italic' }} variant="h3" >{heading}</Typography>
       </Grid>
       <Grid item xs={3}>
       <Button
@@ -73,8 +73,8 @@ function NewNav(props) {
 
 {user.id && (
   <>
-        <MenuItem className={classes.navItem} onClick={handleClose}><Link  to="/profile"><Typography variant="overline" color="primary">My Profile</Typography></Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link  to="/newmatches"><Typography variant="overline" color="primary">See New Matches</Typography></Link></MenuItem>
+        <MenuItem className={classes.navItem} onClick={handleClose}><Link  to="/profile"><Typography variant="overline" color="primary">Profile</Typography></Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link  to="/newmatches"><Typography variant="overline" color="primary">New Matches</Typography></Link></MenuItem>
         <MenuItem onClick={handleClose}><Link  to="/selectedmatches"><Typography variant="overline" color="primary">Current Matches</Typography></Link></MenuItem>
         <MenuItem onClick={handleClose}><LogOutButton /></MenuItem>
         </>

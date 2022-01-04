@@ -42,7 +42,7 @@ function SelectedMatchesList(props) {
     <Container>
     <Grid container spacing={3}>
     <Grid item xs={12}>
-      <Typography variant="h4" color="primary" textAlign="center">{heading}</Typography>
+      <Typography variant="h3" color="primary" textAlign="center">{heading}</Typography>
       {selected.map((selected) => (
       <SelectedMatchesItem selected={selected} />
     ))}

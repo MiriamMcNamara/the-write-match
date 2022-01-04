@@ -64,11 +64,12 @@ function NewNav(props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-{user.id === null &&
+{!user.id && (
           // If there's no user, show login/registration links
           <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="overline" color="primary">
             Login / Register
             </Typography></Link></MenuItem>
+)
         }
 
 {user.id && (
@@ -83,9 +84,7 @@ function NewNav(props) {
         <MenuItem onClick={handleClose}><Link to="/about"><Typography variant="overline" color="primary">
           About The Write Match
           </Typography></Link></MenuItem>
-          <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="overline" color="primary">
-            Login / Register
-            </Typography></Link></MenuItem>
+    
       </Menu>
     </Grid>
     </Container>

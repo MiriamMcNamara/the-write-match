@@ -37,7 +37,15 @@ function SelectedMatchesList(props) {
   }, []);
 
 
-  return (
+  return selected.length===0? (
+    <Container>
+    <Grid item>
+      <Typography>{writer[0].name}, you have no current matches. If you think you are
+      getting this message in error, try refreshing the page. Otherwise, return
+      to the New Matches page to see new potential matches!</Typography>
+    </Grid>
+    </Container>
+  ) : (
 
     <Container>
     <Grid container spacing={3}>

@@ -31,7 +31,15 @@ function NewMatchesList(props) {
     });
   }, []);
 
-  return (
+  return matches.length===0? (
+    <Container>
+    <Grid item>
+      <Typography>{writer[0].name}, you have no new matches. If you think you are
+      getting this message in error, try refreshing the page. Otherwise, go
+      to the Current Matches page to see the status of your current matches!</Typography>
+    </Grid>
+    </Container>
+  ) : (
     <Container>
       <Grid container spacing={3}>
       <Grid item xs={12}>

@@ -34,8 +34,7 @@ function NewMatchesList(props) {
   return matches.length===0? (
     <Container>
     <Grid item>
-      <Typography>{writer[0].name}, you have no new matches. If you think you are
-      getting this message in error, try refreshing the page. Otherwise, go
+      <Typography>{writer[0].name}, you have no new matches. Otherwise, go
       to the Current Matches page to see the status of your current matches!</Typography>
     </Grid>
     </Container>

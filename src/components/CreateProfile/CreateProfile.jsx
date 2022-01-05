@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 
 function CreateProfile(props) {
   const classes = useStyles();
-
+const presenting = true;
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const history = useHistory();
@@ -52,6 +52,20 @@ function CreateProfile(props) {
     contact: "",
     user_id: user.id,
   });
+
+  const setDefaults = () => {
+    console.log( 'in setDefaults' );
+    if( presenting ){
+    setAddWriter({ ...addWriter, 
+      name: "Jane Austen",
+image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0c5y4L2xWYPs4r_N2xw&usqp=CAU",
+    bio: "I'm an English novelist known primarily for six major novels, which interpret, critique and comment upon the British landed gentry at the end of the 18th century. My plots often explore the dependence of women on marriage in the pursuit of favourable social standing and economic security. My use of biting irony, along with my realism and social commentary, have earned me acclaim among critics and scholars.",
+  wip: "A romantic, satirical novel of manners",
+  genres: "romance, satire",
+  contact: "Leave a letter with my butler"
+  } );
+    }
+  }
 
   const postWriter = () => {
     if (
@@ -129,13 +143,14 @@ function CreateProfile(props) {
       <Grid container>
         <Paper>
         <Grid item xs={12}>
-          <Typography variant="h4" color="primary" component="h2" gutterBottom>
+          <Typography variant="h4" color="primary" component="h2" gutterBottom onClick={setDefaults}>
             Create Profile
           </Typography>
         </Grid>
 
         <Grid item xs={12} padding="10px">
           <TextField
+          value={addWriter.name}
             className={classes.field}
             label="Name"
             variant="outlined"
@@ -146,6 +161,7 @@ function CreateProfile(props) {
 
         <Grid item xs={12} padding="10px">
           <TextField
+          value={addWriter.image}
             className={classes.field}
             label="Image URL"
             variant="outlined"
@@ -157,6 +173,7 @@ function CreateProfile(props) {
 
         <Grid item xs={12} padding="10px">
           <TextField
+          value={addWriter.bio}
             className={classes.field}
             label="Bio"
             variant="outlined"
@@ -170,6 +187,7 @@ function CreateProfile(props) {
 
         <Grid item xs={12} padding="10px">
           <TextField
+          value={addWriter.wip}
             className={classes.field}
             label="Describe Your Work In Progress"
             variant="outlined"
@@ -183,6 +201,7 @@ function CreateProfile(props) {
 
         <Grid item xs={12} padding="10px">
         <TextField
+        value={addWriter.genres}
           className={classes.field}
           label="What Genres Do You Write In?"
           variant="outlined"
@@ -250,6 +269,7 @@ function CreateProfile(props) {
             you?
           </Typography>
           <TextField
+          value={addWriter.contact}
             className={classes.field}
             label="Contact Info"
             variant="outlined"

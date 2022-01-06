@@ -19,62 +19,69 @@ function ViewProfile(props) {
   const seeking = useSelector((store) => store.seeking);
   const availableFor = useSelector((store) => store.availablefor);
   const user = useSelector((store) => store.user);
-  const [heading, setHeading] = useState("Profile");
+  const [heading, setHeading] = useState("Your Write Match Profile");
+  const [ emoji, setEmoji ] = useState( '👋');
 
   return (
     <Container>
       <Grid container >
-      <Grid item xs={12}>
+      {/* <Grid item xs={12} sx={{ backgroundColor: 'lightBlue', marginBottom: "10px"}}>
       <Typography
               variant="h3"
-              color="primary"
               component="h2"
               gutterBottom
               textAlign="center"
+              paddingTop="15px"
             >
               {heading}
             </Typography>
-            </Grid>
-        <Paper padding="10px">
+            </Grid> */}
+            <Grid item paddingBottom="20px">
+        <Paper sx={{ margin: '5px', marginColor: "secondary"}}>
           
       
           {writer.map((writer) => (
             <Grid item className="profile" key={writer.id} padding="10px">
-              <Typography variant="h4" fontStyle="italic" textAlign="center">
-                {writer.name}
+              <Typography variant="h5" textAlign="center">
+                Hi {emoji} {writer.name}!
               </Typography>
+              <br />
+              <Typography variant="h6" textAlign="center" fontStyle="italic" >Welcome to {heading}</Typography>
               <br />
               <Grid item >
                 <Box sx={{ border: 5, borderColor: "secondary.main" }}>
               <img src={writer.image}/>
               </Box>
               </Grid>
+              
               <br />
+              <Typography textAlign="center">{writer.bio}</Typography>
               <br />
-              <Typography>{writer.bio}</Typography>
+              <Typography textAlign="center" variant="subtitle1" fontStyle="italic">Work In Progress:</Typography>
+              <Typography textAlign="center">{writer.wip}</Typography>
               <br />
-              <Typography variant="h6">Work In Progress:</Typography>
-              <Typography>{writer.wip}</Typography>
-              <br />
-              <Typography variant="h6">Genre:</Typography>
-              <Typography>{writer.genres}</Typography>
+              <Typography textAlign="center" variant="subtitle1" fontStyle="italic">Genre:</Typography>
+              <Typography textAlign="center" >{writer.genres}</Typography>
             </Grid>
+            
           ))}
     
           {availableFor.map((availableFor) => (
             <Grid item className="availableFor" key={writer.id} padding="10px">
-              <Typography variant="h6">What I'm Available For:</Typography>
-              <Typography>{availableFor.skill}</Typography>
+              <Typography textAlign="center" fontStyle="italic" variant="subtitle1">What I'm Most Excited to Offer Others:</Typography>
+              <Typography textAlign="center">{availableFor.skill}</Typography>
             </Grid>
           ))}
   
           {seeking.map((seeking) => (
             <Grid item className="seeking" key={writer.id} padding="10px">
-              <Typography variant="h6">What I'm Seeking:</Typography>
-              <Typography>{seeking.skill}</Typography>
+              <Typography textAlign="center" fontStyle="italic" variant="subtitle1">What I'm Primarily Looking For:</Typography>
+              <Typography textAlign="center">{seeking.skill}</Typography>
             </Grid>
           ))}
+          <br />
         </Paper>
+        </Grid>
       </Grid>
     </Container>
   );

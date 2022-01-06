@@ -14,7 +14,7 @@ function SelectedMatchesList(props) {
   const seeking = useSelector((store) => store.seeking);
   const availablefor = useSelector((store) => store.availablefor);
   const dispatch = useDispatch();
-  const [heading, setHeading] = useState('Current Matches');
+  const [heading, setHeading] = useState('You Have Current Matches!');
 
   // useEffect(() => {
   //   // dispatch({ type: "FETCH_SELECTED", payload: writer[0].id });
@@ -49,7 +49,7 @@ function SelectedMatchesList(props) {
     <Container>
     <Grid container spacing={3}>
     <Grid item xs={12}>
-      <Typography variant="h3" color="primary" textAlign="center">{heading}</Typography>
+      <Typography variant="h5" fontStyle="italic" textAlign="center">🎉 {heading} 🎉</Typography>
       {selected.map((selected) => (
       <SelectedMatchesItem selected={selected} />
     ))}

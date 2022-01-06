@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     color: "#CAFE48",
   },
   select: {
-    minWidth: 300,
+    minWidth: 370,
   },
 });
 
@@ -154,7 +154,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
             className={classes.field}
             label="Name"
             variant="outlined"
-            color="secondary"
+            color="primary"
             onChange={(event) => handleName(event)}
           />
         </Grid>
@@ -165,7 +165,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
             className={classes.field}
             label="Image URL"
             variant="outlined"
-            color="secondary"
+            color="primary"
             fullWidth
             onChange={(event) => handleImage(event)}
           />
@@ -177,7 +177,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
             className={classes.field}
             label="Bio"
             variant="outlined"
-            color="secondary"
+            color="primary"
             multiline
             rows={4}
             fullWidth
@@ -191,7 +191,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
             className={classes.field}
             label="Describe Your Work In Progress"
             variant="outlined"
-            color="secondary"
+            color="primary"
             multiline
             rows={2}
             fullWidth
@@ -205,7 +205,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
           className={classes.field}
           label="What Genres Do You Write In?"
           variant="outlined"
-          color="secondary"
+          color="primary"
           fullWidth
           onChange={(event) => handleGenres(event)}
         />
@@ -213,8 +213,8 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
 
         <Grid item xs={12} padding="10px">
           <FormControl>
-            <InputLabel color="secondary">
-              What Are You Most Available For?
+            <InputLabel color="primary">
+              What Are You Most Excited to Offer Others?
             </InputLabel>
             <Select
               className={classes.select}
@@ -222,25 +222,25 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
               id="skill-select"
               value={addWriter.skill}
               label="skill"
-              color="secondary"
+              color="primary"
               onChange={(event) => handleSkill(event)}
             >
-              <MenuItem value={1}>Developmental Editing</MenuItem>
-              <MenuItem value={2}>Copy/Line Editing</MenuItem>
-              <MenuItem value={3}>Accountability Buddy</MenuItem>
-              <MenuItem value={4}>Critique Group Member</MenuItem>
-              <MenuItem value={5}>Manuscript Swap</MenuItem>
-              <MenuItem value={6}>World-Building (Fantasy/Sci-Fi)</MenuItem>
-              <MenuItem value={7}>Publishing Strategy</MenuItem>
-              <MenuItem value={8}>Socializing/Networking</MenuItem>
+              <MenuItem value={1}>Big-Picture Developmental Editing Skills</MenuItem>
+              <MenuItem value={2}>Keen Copy/Line Editing Skills</MenuItem>
+              <MenuItem value={3}>Supportive Accountability Buddy Vibes</MenuItem>
+              <MenuItem value={4}>Being an Involved Critique Group Member</MenuItem>
+              <MenuItem value={5}>Full Manuscript Swap and Critique</MenuItem>
+              <MenuItem value={6}>World-Building (Fantasy/Sci-Fi) Know-How</MenuItem>
+              <MenuItem value={7}>Experience in Publishing/Marketing</MenuItem>
+              <MenuItem value={8}>Community/Socializing/Networking</MenuItem>
             </Select>
           </FormControl>
         </Grid>
 
         <Grid item xs={12} padding="10px">
           <FormControl>
-            <InputLabel color="secondary">
-              What Are You Primarly Seeking?
+            <InputLabel color="primary">
+              What Are You Primarly Looking For?
             </InputLabel>
             <Select
               className={classes.select}
@@ -248,17 +248,17 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
               id="seeking-select"
               value={addWriter.seeking}
               label="seeking"
-              color="secondary"
+              color="primary"
               onChange={(event) => handleSeeking(event)}
             >
-              <MenuItem value={1}>Developmental Editing</MenuItem>
-              <MenuItem value={2}>Copy/Line Editing</MenuItem>
-              <MenuItem value={3}>Accountability Buddy</MenuItem>
-              <MenuItem value={4}>Critique Group</MenuItem>
-              <MenuItem value={5}>Manuscript Swap</MenuItem>
-              <MenuItem value={6}>World-Building (Fantasy/Sci-Fi)</MenuItem>
-              <MenuItem value={7}>Publishing Strategy</MenuItem>
-              <MenuItem value={8}>Socializing/Networking</MenuItem>
+              <MenuItem value={1}>Great Developmental Editing Skills</MenuItem>
+              <MenuItem value={2}>Eagle-Eyed Copy/Line Editing Skills</MenuItem>
+              <MenuItem value={3}>An Accountability Buddy to Set Goals With</MenuItem>
+              <MenuItem value={4}>A Critique Group that Meets Regularly</MenuItem>
+              <MenuItem value={5}>A Full Manuscript Swap</MenuItem>
+              <MenuItem value={6}>I Need World-Building (Fantasy/Sci-Fi) Help!</MenuItem>
+              <MenuItem value={7}>Someone Who Knows the Publishing Biz</MenuItem>
+              <MenuItem value={8}>Community/Socializing/Networking</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -273,7 +273,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
             className={classes.field}
             label="Contact Info"
             variant="outlined"
-            color="secondary"
+            color="primary"
             fullWidth
             onChange={(event) => handleContact(event)}
           />
@@ -282,7 +282,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
         <Grid item xs={12} padding="10px">
           <Button
             type="submit"
-            color="secondary"
+            color="primary"
             variant="contained"
             onClick={postWriter}
           >

@@ -35,13 +35,14 @@ function NewMatchesItem(props) {
         user: user.id
       },
     });
+    window.scrollTo(0,0);
   };
 
   return (
       <Grid item key={props.match.id}>
       <Card elevation={2} sx={{marginTop: "20px", border: 5, borderColor: "secondary.main" }}>
         <CardContent sx={{ backgroundColor: 'lightBlue' }}>
-        <Typography textAlign="center" variant="h4" fontStyle="italic">{props.match.name}</Typography>
+        <Typography textAlign="center" variant="h4" >{props.match.name}</Typography>
         </CardContent>
         <CardMedia sx={{ borderTop: 5, borderBottom: 5, borderColor: "secondary.main" }}
         component="img"
@@ -49,17 +50,17 @@ function NewMatchesItem(props) {
         alt="matched writer"
       />
         <CardContent>
-        <Typography variant="body1">{props.match.bio}</Typography>
+        <Typography variant="body1" textAlign="center">{props.match.bio}</Typography>
         <br />
-        <Typography variant="body2">Work in Progress: {props.match.wip}</Typography>
+        <Typography variant="body2" textAlign="center">Work in Progress: {props.match.wip}</Typography>
         <br />
-        <Typography variant="body2">Genres: {props.match.genres}</Typography>
+        <Typography variant="body2" textAlign="center">Genres: {props.match.genres}</Typography>
         </CardContent>
         <CardContent>
         <Grid container>
           <Grid item xs={2}></Grid>
           <Grid item xs={8} >
-        <Button variant="outlined" onClick={checkForMatch}>
+        <Button variant="contained" color="secondary" onClick={checkForMatch}>
         Match With This Writer!
         </Button>
         </Grid>

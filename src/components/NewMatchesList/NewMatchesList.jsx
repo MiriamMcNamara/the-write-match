@@ -14,7 +14,7 @@ function NewMatchesList(props) {
   const matches = useSelector((store) => store.matches);
   const selected = useSelector((store) => store.selected);
 
-  const [heading, setHeading] = useState("New Matches!");
+  const [heading, setHeading] = useState("You Have New Matches!");
 
   useEffect(() => {
     dispatch({ type: "FETCH_WRITER", payload: user.id });
@@ -41,8 +41,8 @@ function NewMatchesList(props) {
   ) : (
     <Container>
       <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <Typography variant="h3" color="primary" textAlign="center">{heading}</Typography>
+      <Grid item xs={12} >
+        <Typography paddingTop="10px" paddingBottom="10px" variant="h5" fontStyle="italic" textAlign="center">🎉 {heading} 🎉</Typography>
         {matches.map((match) => (
         <NewMatchesItem match={match} />
       ))}

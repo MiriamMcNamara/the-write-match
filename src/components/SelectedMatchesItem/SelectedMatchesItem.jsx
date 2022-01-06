@@ -34,6 +34,7 @@ function SelectedMatchesItem(props) {
         user: user.id,
       },
     });
+    window.scrollTo(0,0);
   };
 
   const [open, setOpen] = React.useState(false);
@@ -54,7 +55,8 @@ function SelectedMatchesItem(props) {
       >
         <CardContent sx={{ backgroundColor: 'lightBlue' }}>
           
-          <Typography textAlign="center" variant="h4">CONFIRMED MATCH!</Typography>
+          <Typography textAlign="center" variant="h5">CONFIRMED MATCH!</Typography>
+          <br/>
           <Typography textAlign="center" variant="h5">{props.selected.name}</Typography>
         </CardContent>
         <CardMedia
@@ -64,13 +66,13 @@ function SelectedMatchesItem(props) {
           alt="matched writer"
         />
         <CardContent>
-          <Typography variant="body1">{props.selected.bio}</Typography>
+          <Typography variant="body1" textAlign="center">{props.selected.bio}</Typography>
           <br />
-          <Typography variant="body2">
+          <Typography variant="body2" textAlign="center">
             Work in Progress: {props.selected.wip}
           </Typography>
           <br />
-          <Typography variant="body2">
+          <Typography variant="body2" textAlign="center">
             Genres: {props.selected.genres}
           </Typography>
         </CardContent>
@@ -96,18 +98,22 @@ function SelectedMatchesItem(props) {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
+          <DialogTitle id="alert-dialog-title" textAlign="center">
             {"Congrats on matching with another awesome creative!"}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText textAlign="center" id="alert-dialog-description">
               Here's how {props.selected.name} would like for you to get in
               touch:
               <br />
-              <Typography variant="h6">{props.selected.contact}</Typography>
+              <br />
+              <Typography textAlign="center" variant="h6" fontStyle="italic">"{props.selected.contact}"</Typography>
+              <br />
               We recommend referencing The Write Match in your conversation,
               email or DM title/intro so they know it's you.
-              <Typography variant="h5">Happy Connecting!</Typography>
+              <br />
+              <br />
+              <Typography textAlign="center" variant="h5" fontStyle="italic">🎉 Happy Connecting! 🎉</Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -120,7 +126,7 @@ function SelectedMatchesItem(props) {
         <Grid container>
           <Grid item xs={2}></Grid>
           <Grid item xs={8} paddingLeft="25px">
-        <Button variant="outlined" onClick={deleteSelected}>
+        <Button variant="contained" color='secondary' onClick={deleteSelected}>
           Remove this Match
         </Button>
         </Grid>
@@ -147,13 +153,13 @@ function SelectedMatchesItem(props) {
           sx={{ borderTop: 5, borderBottom: 5, borderColor: "secondary.main" }}
         />
         <CardContent>
-          <Typography variant="body1">{props.selected.bio}</Typography>
+          <Typography variant="body1" textAlign="center">{props.selected.bio}</Typography>
           <br />
-          <Typography variant="body2">
+          <Typography variant="body2" textAlign="center">
             Work in Progress: {props.selected.wip}
           </Typography>
           <br />
-          <Typography variant="body2">
+          <Typography variant="body2" textAlign="center">
             Genres: {props.selected.genres}
           </Typography>
         </CardContent>
@@ -161,7 +167,7 @@ function SelectedMatchesItem(props) {
           <Grid container>
           <Grid item xs={2}></Grid>
           <Grid item xs={8} paddingLeft="25px">
-        <Button variant="outlined" onClick={deleteSelected} >
+        <Button variant="contained" color="secondary" onClick={deleteSelected} >
           Remove this Match
         </Button>
         </Grid>

@@ -33,9 +33,9 @@ const theme =createTheme({
     secondary: lightGreen
   },
   typography:{
-    fontfamily: 'Padauk',
+    fontFamily: 'Padauk',
     fontWeightRegular: 400,
-    fontWeightBold: 400
+    fontWeightBold: 700
   }
 })
 

@@ -56,7 +56,7 @@ function SelectedMatchesItem(props) {
         <CardContent sx={{ backgroundColor: 'lightBlue' }}>
           
           <Typography textAlign="center" variant="h5">CONFIRMED MATCH!</Typography>
-          <br/>
+          
           <Typography textAlign="center" variant="h5">{props.selected.name}</Typography>
         </CardContent>
         <CardMedia
@@ -79,7 +79,7 @@ function SelectedMatchesItem(props) {
         <CardContent>
         <Grid container>
           <Grid item xs={2}></Grid>
-          <Grid item xs={8} paddingLeft="15px">
+          <Grid item xs={8} paddingLeft="20px">
         <Button
           variant="contained"
           color="secondary"
@@ -143,7 +143,7 @@ function SelectedMatchesItem(props) {
       >
         <CardContent sx={{ backgroundColor: 'lightBlue' }}>
           <Typography textAlign="center" variant="h5">AWAITING CONFIRMATION</Typography>
-          <br />
+          
           <Typography textAlign="center" variant="h5">{props.selected.name}</Typography>
         </CardContent>
         <CardMedia

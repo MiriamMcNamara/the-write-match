@@ -41,7 +41,7 @@ function NewNav(props) {
       sx={{ border: 5, borderColor: "secondary.main", backgroundColor: "lightBlue" }}
       marginBottom="20px">
         <Grid item xs={9}>
-      <Typography sx={{ fontStyle: 'italic' }} variant="h3" >{heading}</Typography>
+      <Typography variant="h4" >{heading}</Typography>
       </Grid>
       <Grid item xs={3}>
       <Button

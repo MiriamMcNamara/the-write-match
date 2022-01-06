@@ -42,10 +42,11 @@ function ViewProfile(props) {
       
           {writer.map((writer) => (
             <Grid item className="profile" key={writer.id} padding="10px">
+              <br />
               <Typography variant="h5" textAlign="center">
                 Hi {emoji} {writer.name}!
               </Typography>
-              <br />
+            
               <Typography variant="h6" textAlign="center" fontStyle="italic" >Welcome to {heading}</Typography>
               <br />
               <Grid item >

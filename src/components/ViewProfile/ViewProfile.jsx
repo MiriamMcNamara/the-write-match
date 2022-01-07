@@ -5,33 +5,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Box from '@mui/material/Box';
-// import { makeStyles } from '@mui/material';
-
-// const useStyles = makeStyles(theme => ({
-//   marginAutoContainer: {
-//     width: 500,
-//     height: 80,
-//     display: 'flex',
-//     backgroundColor: 'gold',
-//   },
-//   marginAutoItem: {
-//     margin: 'auto'
-//   },
-//   alignItemsAndJustifyContent: {
-//     width: 500,
-//     height: 80,
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     backgroundColor: 'pink',
-//   },
-// }))
 
 function ViewProfile(props) {
 
   const dispatch = useDispatch();
-
-  // const classes = useStyles();
 
   useEffect(() => {
     dispatch({ type: "FETCH_WRITER", payload: user.id });
@@ -49,19 +26,8 @@ function ViewProfile(props) {
   return (
     <Container>
       <Grid container >
-      {/* <Grid item xs={12} sx={{ backgroundColor: 'lightBlue', marginBottom: "10px"}}>
-      <Typography
-              variant="h3"
-              component="h2"
-              gutterBottom
-              textAlign="center"
-              paddingTop="15px"
-            >
-              {heading}
-            </Typography>
-            </Grid> */}
             <Grid item paddingBottom="20px">
-        <Paper variant="outlined" >
+        <Box  sx={{ border: 5, borderColor: "secondary.main" }}>
           
       
           {writer.map((writer) => (
@@ -78,7 +44,7 @@ function ViewProfile(props) {
                 display="flex" 
                 alignItems="center"
                 justifyContent="center"
-                backgroundColor="secondary.main"
+                backgroundColor="lightBlue"
                 sx={{ border: 5, borderColor: "secondary.main" }}>
               <img src={writer.image}/>
               </Box>
@@ -110,7 +76,7 @@ function ViewProfile(props) {
             </Grid>
           ))}
           <br />
-        </Paper>
+        </Box>
         </Grid>
       </Grid>
     </Container>

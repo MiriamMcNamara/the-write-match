@@ -5,9 +5,33 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Box from '@mui/material/Box';
+// import { makeStyles } from '@mui/material';
+
+// const useStyles = makeStyles(theme => ({
+//   marginAutoContainer: {
+//     width: 500,
+//     height: 80,
+//     display: 'flex',
+//     backgroundColor: 'gold',
+//   },
+//   marginAutoItem: {
+//     margin: 'auto'
+//   },
+//   alignItemsAndJustifyContent: {
+//     width: 500,
+//     height: 80,
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     backgroundColor: 'pink',
+//   },
+// }))
 
 function ViewProfile(props) {
+
   const dispatch = useDispatch();
+
+  // const classes = useStyles();
 
   useEffect(() => {
     dispatch({ type: "FETCH_WRITER", payload: user.id });
@@ -37,7 +61,7 @@ function ViewProfile(props) {
             </Typography>
             </Grid> */}
             <Grid item paddingBottom="20px">
-        <Paper sx={{ margin: '5px', marginColor: "secondary"}}>
+        <Paper variant="outlined" >
           
       
           {writer.map((writer) => (
@@ -50,7 +74,12 @@ function ViewProfile(props) {
               <Typography variant="h6" textAlign="center" fontStyle="italic" >Welcome to {heading}</Typography>
               <br />
               <Grid item >
-                <Box sx={{ border: 5, borderColor: "secondary.main" }}>
+                <Box 
+                display="flex" 
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="secondary.main"
+                sx={{ border: 5, borderColor: "secondary.main" }}>
               <img src={writer.image}/>
               </Box>
               </Grid>
@@ -61,7 +90,7 @@ function ViewProfile(props) {
               <Typography textAlign="center" variant="subtitle1" fontStyle="italic">Work In Progress:</Typography>
               <Typography textAlign="center">{writer.wip}</Typography>
               <br />
-              <Typography textAlign="center" variant="subtitle1" fontStyle="italic">Genre:</Typography>
+              <Typography textAlign="center" variant="subtitle1" fontStyle="italic">Genres:</Typography>
               <Typography textAlign="center" >{writer.genres}</Typography>
             </Grid>
             

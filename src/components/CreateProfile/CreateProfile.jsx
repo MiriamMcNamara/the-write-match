@@ -62,7 +62,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbU7TVXhMEVhh-ja0
     bio: "I'm an English novelist known primarily for six major novels, which interpret, critique and comment upon the British landed gentry at the end of the 18th century. My plots often explore the dependence of women on marriage in the pursuit of favourable social standing and economic security. My use of biting irony, along with my realism and social commentary, have earned me acclaim among critics and scholars.",
   wip: "A romantic, satirical novel of manners",
   genres: "romance, satire",
-  contact: "Leave a letter with my butler"
+  contact: "Leave a letter with my butler at my Chawton estate"
   } );
     }
   }

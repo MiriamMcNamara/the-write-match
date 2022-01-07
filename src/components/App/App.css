@@ -17,10 +17,13 @@ img {
   margin: auto;
   border: 5px;
   border-color: greenyellow;
+  object-fit: fill;
+}
+  
   /* //try px instead of % and see what happens */
   /* max-height: 100%; or try a css doc for each component */
-  /* border: 2px black; this isn't working */
-}
+  /* border: 2px black; 
+
 /* from jen
 img {
   margin-top: 15px;

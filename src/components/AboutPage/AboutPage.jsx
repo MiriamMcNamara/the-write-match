@@ -12,7 +12,12 @@ function AboutPage() {
   return (
     <Container>
     <Grid container>
-      <Grid item sx={{ border: 5, borderColor: "secondary.main" }}>
+      <Grid item 
+      display="flex" 
+      alignItems="center"
+      justifyContent="center"
+      backgroundColor="secondary.main"
+      sx={{ border: 5, borderColor: "secondary.main" }}>
       <img src='/images/iwritebooks.JPG' alt="Miriam, creator of The Write Match" />
       </Grid>
       <Grid item>
@@ -32,7 +37,7 @@ function AboutPage() {
           </Typography>
           <br/>
           <Box sx={ {backgroundColor: "lightBlue", marginBottom: "10px" } }><Typography variant="h6" textAlign="center">Tech Used:</Typography></Box>
-           <br/>
+           
           <li>Javascript</li>
             <li>React</li>
             <li>Redux-Saga</li>
@@ -41,25 +46,30 @@ function AboutPage() {
             <li>
             Material UI</li>
             <li>CSS</li>
+            <li>Passport.js</li>
+            <li>Adobe XD</li>
+            
            <br/>
            <Box sx={ {backgroundColor: "lightBlue", marginBottom: "10px" } }><Typography variant="h6" textAlign="center">My toughest challenge building this app:</Typography></Box>
-          <br/>
-          <li>Expected: the matching algorithm <br />(PostgreSQL Query)</li>
-          <li>Unexpected: the sorting algorithm <br />(Javascript/logic in Sagas)</li>
+          
+          <li><b>Expected:</b> the matching algorithm <br /><i>(PostgreSQL Query)</i></li>
+          
+          <li><b>Unexpected:</b> the sorting algorithm <br /><i>(Javascript/logic in Sagas)</i></li>
           <br/>
           <Box sx={ {backgroundColor: "lightBlue", marginBottom: "10px" } }><Typography variant="h6" textAlign="center">My next steps:</Typography></Box>
-          <br/>
+          
           <li>Edit Profile Option</li>
           <li>Direct Messaging Feature</li>
           <li>Increase Sophistication of Matching Algorithm</li>
             <br />
             <Box sx={ {backgroundColor: "lightBlue", marginBottom: "10px" } }><Typography variant="h6" textAlign="center">Thank you to:</Typography></Box>
-          <br />
+         
           <li>my dogs</li>
           <li>my partner</li>
           <li>my workplace</li>
-          <li>my Prime Academy Instructors</li>
+          <li>my Prime Academy Instructors (especially Dev!)</li>
           <li>My Prime Academy Cohort</li>
+          <br/>
       </Grid>
     </Grid>
     </Container>

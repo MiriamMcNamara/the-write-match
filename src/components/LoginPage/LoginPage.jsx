@@ -14,8 +14,9 @@ function LoginPage() {
 
       <Grid container padding="20px">
         <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} paddingLeft="10px">
         <Button 
+        color="secondary"
           variant="contained"
           onClick={() => {
             history.push('/registration');

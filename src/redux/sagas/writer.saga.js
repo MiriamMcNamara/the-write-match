@@ -2,9 +2,14 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchWriter( action ) {
+  let userinfo = action.payload.user_id
+  console.log( '****************action.payload:', action.payload );
+  if (userinfo == null) {
+    userinfo = action.payload;
+  }
   try {
-    
-    const response = yield axios.get(`/api/writer/${action.payload}`);
+    console.log( '-----------> userinfo:', userinfo );
+    const response = yield axios.get(`/api/writer/${userinfo}`);
     yield put({ type: 'SET_WRITER', payload: response.data });
   } catch (error) {
     console.log('writer get request failed', error);

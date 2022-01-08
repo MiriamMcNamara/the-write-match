@@ -47,12 +47,13 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #e0e0e0;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
+  background-color: #00bcd4;
+  color: #000000;
+  font-size: 0.9rem;
+  font-family: 'Padauk', sans-serif;
   outline: 0;
   cursor: pointer;
 }
@@ -128,3 +129,9 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+

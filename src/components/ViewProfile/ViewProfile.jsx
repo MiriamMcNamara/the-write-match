@@ -9,19 +9,18 @@ import Box from '@mui/material/Box';
 function ViewProfile(props) {
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: "FETCH_WRITER", payload: user.id });
-    dispatch({ type: "FETCH_SEEKING", payload: user.id });
-    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
-  }, []);
-
   const writer = useSelector((store) => store.writer);
   const seeking = useSelector((store) => store.seeking);
   const availableFor = useSelector((store) => store.availablefor);
   const user = useSelector((store) => store.user);
   const [heading, setHeading] = useState("Your Write Match Profile");
   const [ emoji, setEmoji ] = useState( '👋');
+
+  useEffect(() => {
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
+  }, []);
 
   return (
     <Container>

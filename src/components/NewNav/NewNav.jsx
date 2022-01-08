@@ -58,21 +58,22 @@ function NewNav(props) {
       </Button>
       </Grid>
       <Menu
+        
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          'aria-labelledby': 'basic-button'
         }}
       >
 {!user.id && (
   <>
            {/* If there's no user, show login/registration links */}
-          <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="button">
+          <MenuItem onClick={handleClose}><Link to="/login"><Typography variant="button" >
             Login / Register
             </Typography></Link></MenuItem>
-            <MenuItem onClick={handleClose}><Link to="/about"><Typography variant="button" >
+            <MenuItem onClick={handleClose}><Link to="/about"><Typography variant="button">
           About The Write Match
           </Typography></Link></MenuItem>
             </>

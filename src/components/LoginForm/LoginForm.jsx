@@ -36,7 +36,7 @@ function LoginForm() {
     <form  onSubmit={login}>
 
       <Grid item xs={12} >
-      <Typography variant="h4" marginLeft="10px">Login</Typography>
+      <Typography variant="h4" fontStyle="italic">Login</Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
@@ -71,7 +71,7 @@ function LoginForm() {
       </Grid>
       
       <Grid item paddingTop="10px">
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <input className="btn" type="submit" name="submit" value="LOG IN" />
       </Grid>
       
     </form>

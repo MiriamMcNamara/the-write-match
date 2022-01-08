@@ -29,7 +29,7 @@ function RegisterForm() {
     <Grid container padding="10px" backgroundColor="lightblue" sx={{ border: 5, borderColor: "secondary.main" }}>
     <form onSubmit={registerUser}>
     <Grid item xs={12} >
-    <Typography variant="h4" marginLeft="10px">Register User</Typography>
+    <Typography variant="h4" fontStyle="italic">Register User</Typography>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -61,7 +61,7 @@ function RegisterForm() {
         </label>
       </Grid>
       <Grid item paddingTop="10px">
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn" type="submit" name="submit" value="REGISTER" />
       </Grid>
     </form>
     </Grid>

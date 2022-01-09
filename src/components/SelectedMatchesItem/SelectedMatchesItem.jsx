@@ -11,19 +11,23 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Box from "@mui/material/Box";
+
+//this component creates an item for each match that the SelectedMatchesList
+//pulls from the selected reducer and displays it on the DOM.
+//It has conditional rendering depending on whether the match is confirmed
+//or awaiting confirmation.
 
 function SelectedMatchesItem(props) {
-  const selected = useSelector((store) => store.selected);
   const writer = useSelector((store) => store.writer);
   const user = useSelector((store) => store.user);
   const seeking = useSelector((store) => store.seeking);
   const availablefor = useSelector((store) => store.availablefor);
-  const [heading, setHeading] = useState("Current Match!");
   const dispatch = useDispatch();
 
+  //the user can delete a selected match that is confirmed or awaiting
+  //confirmation. We need to send all of this info in the payload because this
+  //dispatch triggers the 'FILTER_MATCHES' saga to run again.
   const deleteSelected = () => {
-    console.log(" in deleteSelected");
     dispatch({
       type: "DELETE_SELECTED",
       payload: {
@@ -34,9 +38,11 @@ function SelectedMatchesItem(props) {
         user: user.id,
       },
     });
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
 
+  //the next three hooks are related to the modal that pops up when the user clicks
+  //'Contact This Writer!'
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -53,11 +59,14 @@ function SelectedMatchesItem(props) {
         elevation={2}
         sx={{ marginTop: "20px", border: 5, borderColor: "secondary.main" }}
       >
-        <CardContent sx={{ backgroundColor: 'lightBlue' }}>
-          
-          <Typography textAlign="center" variant="h5">CONFIRMED MATCH!</Typography>
-          
-          <Typography textAlign="center" variant="h5">{props.selected.name}</Typography>
+        <CardContent sx={{ backgroundColor: "lightBlue" }}>
+          <Typography textAlign="center" variant="h5">
+            CONFIRMED MATCH!
+          </Typography>
+
+          <Typography textAlign="center" variant="h5">
+            {props.selected.name}
+          </Typography>
         </CardContent>
         <CardMedia
           sx={{ borderTop: 5, borderBottom: 5, borderColor: "secondary.main" }}
@@ -66,31 +75,39 @@ function SelectedMatchesItem(props) {
           alt="matched writer"
         />
         <CardContent>
-          <Typography variant="body1" textAlign="center">{props.selected.bio}</Typography>
-          <br />
-          <Typography variant="body2" textAlign="center">
-            Work in Progress: {props.selected.wip}
+          <Typography variant="body1" textAlign="center">
+            {props.selected.bio}
           </Typography>
           <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            Work in Progress:
+          </Typography>
           <Typography variant="body2" textAlign="center">
-            Genres: {props.selected.genres}
+            {props.selected.wip}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            Genres:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {props.selected.genres}
           </Typography>
         </CardContent>
         <CardContent>
-        <Grid container>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8} paddingLeft="20px">
-        <Button
-          variant="contained"
-          color="secondary"
-          gutterBottom
-          onClick={handleClickOpen}
-        >
-          Contact This Writer!
-        </Button>
-        </Grid>
-        <Grid item xs={2}></Grid>
-        </Grid>
+          <Grid container>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8} paddingLeft="20px">
+              <Button
+                variant="contained"
+                color="secondary"
+                gutterBottom
+                onClick={handleClickOpen}
+              >
+                Contact This Writer!
+              </Button>
+            </Grid>
+            <Grid item xs={2}></Grid>
+          </Grid>
         </CardContent>
         <Dialog
           open={open}
@@ -107,13 +124,17 @@ function SelectedMatchesItem(props) {
               touch:
               <br />
               <br />
-              <Typography textAlign="center" variant="h6" fontStyle="italic">"{props.selected.contact}"</Typography>
+              <Typography textAlign="center" variant="h6" fontStyle="italic">
+                "{props.selected.contact}"
+              </Typography>
               <br />
               We recommend referencing The Write Match in your conversation,
               email or DM title/intro so they know it's you.
               <br />
               <br />
-              <Typography textAlign="center" variant="h5" fontStyle="italic">🎉 Happy Connecting! 🎉</Typography>
+              <Typography textAlign="center" variant="h5" fontStyle="italic">
+                🎉 Happy Connecting! 🎉
+              </Typography>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -123,15 +144,19 @@ function SelectedMatchesItem(props) {
           </DialogActions>
         </Dialog>
         <CardContent>
-        <Grid container>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8} paddingLeft="25px">
-        <Button variant="contained" color='secondary' onClick={deleteSelected}>
-          Remove this Match
-        </Button>
-        </Grid>
-        <Grid item xs={2}></Grid>
-        </Grid>
+          <Grid container>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8} paddingLeft="25px">
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={deleteSelected}
+              >
+                Remove this Match
+              </Button>
+            </Grid>
+            <Grid item xs={2}></Grid>
+          </Grid>
         </CardContent>
       </Card>
     </Grid>
@@ -141,10 +166,14 @@ function SelectedMatchesItem(props) {
         elevation={2}
         sx={{ marginTop: "20px", border: 5, borderColor: "secondary.main" }}
       >
-        <CardContent sx={{ backgroundColor: 'lightBlue' }}>
-          <Typography textAlign="center" variant="h5">AWAITING CONFIRMATION</Typography>
-          
-          <Typography textAlign="center" variant="h5">{props.selected.name}</Typography>
+        <CardContent sx={{ backgroundColor: "lightBlue" }}>
+          <Typography textAlign="center" variant="h5">
+            AWAITING CONFIRMATION
+          </Typography>
+
+          <Typography textAlign="center" variant="h5">
+            {props.selected.name}
+          </Typography>
         </CardContent>
         <CardMedia
           component="img"
@@ -153,26 +182,38 @@ function SelectedMatchesItem(props) {
           sx={{ borderTop: 5, borderBottom: 5, borderColor: "secondary.main" }}
         />
         <CardContent>
-          <Typography variant="body1" textAlign="center">{props.selected.bio}</Typography>
-          <br />
-          <Typography variant="body2" textAlign="center">
-            Work in Progress: {props.selected.wip}
+          <Typography variant="body1" textAlign="center">
+            {props.selected.bio}
           </Typography>
           <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            Work in Progress:
+          </Typography>
           <Typography variant="body2" textAlign="center">
-            Genres: {props.selected.genres}
+            {props.selected.wip}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            Genres:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {props.selected.genres}
           </Typography>
         </CardContent>
-        <CardContent >
+        <CardContent>
           <Grid container>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={8} paddingLeft="25px">
-        <Button variant="contained" color="secondary" onClick={deleteSelected} >
-          Remove this Match
-        </Button>
-        </Grid>
-        <Grid item xs={2}></Grid>
-        </Grid>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8} paddingLeft="25px">
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={deleteSelected}
+              >
+                Remove this Match
+              </Button>
+            </Grid>
+            <Grid item xs={2}></Grid>
+          </Grid>
         </CardContent>
       </Card>
     </Grid>

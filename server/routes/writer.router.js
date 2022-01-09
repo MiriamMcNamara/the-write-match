@@ -9,7 +9,6 @@ const {
  * GET route for selecting the profile info for the user who is logged in
  */
 router.get("/:id", rejectUnauthenticated, (req, res) => {
-  console.log( 'req params id:', req.params)
   const writerQuery = `SELECT * FROM writer
   WHERE user_id = ${req.params.id}`;
   pool

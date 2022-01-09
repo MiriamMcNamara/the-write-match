@@ -18,12 +18,11 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
     WHERE approver_id = ${req.params.id}`;
   pool
     .query(query)
-    .then((result)=> {
-      console.log("selected GET hit");
+    .then((result) => {
       res.send(result.rows);
     })
     .catch((err) => {
-      console.log("ERROR: Get writer", err);
+      console.log("ERROR: Get selected", err);
       res.sendStatus(500);
     });
 });
@@ -32,9 +31,7 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
  * DELETE route for selectedMatches
  */
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
-  console.log("DELETE route hit");
   const queryString = `DELETE FROM matches WHERE id ='${req.params.id}'`;
-
   console.log(queryString);
   pool
     .query(queryString)
@@ -42,7 +39,7 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log(err);
+      console.log("ERROR: delete selected", err);
       res.sendStatus(500);
     });
 });

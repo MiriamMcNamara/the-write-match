@@ -7,7 +7,6 @@ const {
 
 //this is the GET route that proceeds the POST or the PUT, which checks for an existing match first
 router.get("/existing/", rejectUnauthenticated, (req, res) => {
-  console.log(req.query);
   const query = `SELECT * FROM matches WHERE initiator_id=$1 AND approver_id=$2`;
   const values = [req.query.initiator, req.query.approver];
   pool
@@ -20,7 +19,7 @@ router.get("/existing/", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-  
+
 //this is the GET route that selects writers based on algorithm for the user
 router.get("/", rejectUnauthenticated, (req, res) => {
   const query = `SELECT DISTINCT writer.id, name, image, bio, wip, contact, genres FROM writer

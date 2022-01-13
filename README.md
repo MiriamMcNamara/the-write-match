@@ -9,7 +9,6 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 - [Contacts](#contacts)
 
@@ -24,8 +23,9 @@
 <img src="public/images/ViewProfile.jpg" />
 <img src="public/images/NewNav.jpg" />
 <img src="public/images/NewMatches.jpg" />
-<img src="public/images/ConfirmedMatch.jpg" />
 <img src="public/images/AwaitingConfirmation.jpg" />
+<img src="public/images/ConfirmedMatch.jpg" />
+<img src="public/images/ContactModal.jpg" />
 <img src="public/images/StickyNoteScrum.png" />
 
 ## Built With
@@ -47,17 +47,17 @@ There is a database.sql file to use to set up a database. After that once you fo
 
 ## Usage
 
-When the user lands on the homepage, they will be able to log into the app if they have already created a username and password, which will direct them to their profile page. If they have never logged in before, they can click on "Register," which will route them to the registration page. Once they have created their username and password, they will be directed to the Create Profile page, where they will enter information into several inputs before submitting. Once they have submitted, they will be routed to the View Profile page. From there, the user can go to either the New Matches or Current Matches pages. On New Matches, they will be presented with other writers whose profiles have been matched with theirs based on their profile. They can select writers on this page. On the Current Matches page, they can view their current matches. They will be displayed as either "Awaiting Confirmation," which means that the other user has not yet selected the user as a match, or as "Confirmed Match!" which means that they other user has also selected them. If they have both selected each other, they will have the option to view their contact information.
+When the user lands on the homepage, they will be able to log into the app if they have already created a username and password, which will direct them to their profile page. If they have never logged in before, they can click on "Register," which will route them to the registration page.
+
+Once they have created their username and password, they will be directed to the Create Profile page, where they will enter information into several inputs before submitting. Once they have submitted, they will be routed to the View Profile page. From there, the user can go to either the New Matches or Current Matches pages.
+
+On New Matches, they will be presented with other writers whose profiles have been matched with theirs based on their profile. They can select writers to match with on this page. On the Current Matches page, they can view their current matches. They will be displayed as either "Awaiting Confirmation," which means that the other user has not yet also selected the user as a match, or as "Confirmed Match!" which means that they other user has also selected them. If they have both selected each other, they will have the option to view their contact information.
 
 Next steps include:
 -- An Edit Profile option so that writers can edit their inputs to view different matches
 -- A Direct Messaging feature within the app
 -- Increasing the sophistication of the matching algorithm
 -- Deploying the app to Heroku!
-
-## License
-
-<a href="https://choosealicense.com/licenses/mit/"><img src="https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/mit.svg" height=40 />MIT License</a>
 
 ## Acknowledgements
 

@@ -24,7 +24,6 @@ This app is deployed on Heroku! To experience the app for yourself, please go to
 
 ## Screenshots
 
-<img src="public/images/AboutPage.jpg" width="200"  />
 <img src="public/images/LoginPage.jpg" width="200"  />
 <img src="public/images/ViewProfile.jpg" width="200"   />
 <img src="public/images/NewNav.jpg" width="200"  />

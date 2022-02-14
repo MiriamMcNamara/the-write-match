@@ -56,6 +56,7 @@ function AboutPage() {
             'The Write Match' aims to help connect writers based on what they
             are looking for and what they have to offer each other.
           </Typography>
+        </Grid>
       </Grid>
     </Container>
   );

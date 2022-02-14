@@ -18,7 +18,7 @@
 
 ## Screenshots
 
-<img src="public/images/AboutPage.jpg" />
+<img src="public/images/AboutPage.jpg" width="200" height="400" />
 <img src="public/images/LoginPage.jpg" />
 <img src="public/images/ViewProfile.jpg" />
 <img src="public/images/NewNav.jpg" />

@@ -56,64 +56,6 @@ function AboutPage() {
             'The Write Match' aims to help connect writers based on what they
             are looking for and what they have to offer each other.
           </Typography>
-          <br />
-          <Box sx={{ backgroundColor: "lightBlue", marginBottom: "10px" }}>
-            <Typography variant="h6" textAlign="center">
-              Tech Used:
-            </Typography>
-          </Box>
-
-          <li>Javascript</li>
-          <li>React</li>
-          <li>Redux-Saga</li>
-          <li>Node/Express</li>
-          <li>PostgreSQL</li>
-          <li>Material UI</li>
-          <li>CSS</li>
-          <li>Passport.js</li>
-          <li>Adobe XD</li>
-
-          <br />
-          <Box sx={{ backgroundColor: "lightBlue", marginBottom: "10px" }}>
-            <Typography variant="h6" textAlign="center">
-              My toughest challenge building this app:
-            </Typography>
-          </Box>
-
-          <li>
-            <b>Expected:</b> the matching algorithm <br />
-            <i>(PostgreSQL Query)</i>
-          </li>
-
-          <li>
-            <b>Unexpected:</b> the sorting algorithm <br />
-            <i>(Javascript/logic in Sagas)</i>
-          </li>
-          <br />
-          <Box sx={{ backgroundColor: "lightBlue", marginBottom: "10px" }}>
-            <Typography variant="h6" textAlign="center">
-              My next steps:
-            </Typography>
-          </Box>
-
-          <li>Edit Profile Option</li>
-          <li>Direct Messaging Feature</li>
-          <li>Increase Sophistication of Matching Algorithm</li>
-          <li>Deploy App to Heroku!</li>
-          <br />
-          <Box sx={{ backgroundColor: "lightBlue", marginBottom: "10px" }}>
-            <Typography variant="h6" textAlign="center">
-              Thank you to:
-            </Typography>
-          </Box>
-
-          <li>my dogs</li>
-          <li>my partner</li>
-          <li>my workplace</li>
-          <li>my Prime Academy Instructors (especially Dev!)</li>
-          <li>My Prime Academy Cohort</li>
-          <br />
-        </Grid>
       </Grid>
     </Container>
   );

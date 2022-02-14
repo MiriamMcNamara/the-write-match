@@ -14,7 +14,11 @@
 
 ## Description
 
-'The Write Match' is a matching app that aims to help connect writers based on what they are looking for and what they have to offer each other. Users log in with a unique username and password, and then create a profile that includes their genres, what they are looking for, and what they have to offer. They are then matched with other writers. They can select matches, and if confirmed by the other user, they have the option to contact their match. They can also delete selected matches if they change their mind.
+I'm a young adult fiction writer who moved from Asheville, NC to Minneapolis, MN a few years ago, and lost a wonderful weekly critique group and local writing community in the process. I struggled to connect with other writers in my new home, and often wished there was an easy way to find them. But I doggedly volunteered at literary events and went to book signings and meet-ups, and eventually I made some wonderful connections.
+
+Then covid and lockdown hit, and I, like so many other writers, was once again scrambling to find new ways to build community and meet new, like-minded creatives. I thought: wouldn't it be wonderful if there was an app like Tindr that matched creatives with each other based on medium, common goals, and similar interests? That's when the idea for 'The Write Match' was born!
+
+'The Write Match' aims to help connect writers based on what they are looking for and what they have to offer each other. Users log in with a unique username and password, and then create a profile that includes their genres, what they are looking for, and what they have to offer. They are then matched with other writers. They can select matches, and if confirmed by the other user, they have the option to contact their match. They can also delete selected matches if they change their mind.
 
 This app is deployed on Heroku! To experience the app for yourself, please go to https://gentle-bastion-76166.herokuapp.com/ and register.
 
@@ -58,7 +62,6 @@ Next steps include:
 -- An Edit Profile option so that writers can edit their inputs to view different matches
 -- A Direct Messaging feature within the app
 -- Increasing the sophistication of the matching algorithm
--- Deploying the app to Heroku!
 
 ## Acknowledgements
 

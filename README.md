@@ -16,17 +16,18 @@
 
 'The Write Match' is a matching app that aims to help connect writers based on what they are looking for and what they have to offer each other. Users log in with a unique username and password, and then create a profile that includes their genres, what they are looking for, and what they have to offer. They are then matched with other writers. They can select matches, and if confirmed by the other user, they have the option to contact their match. They can also delete selected matches if they change their mind.
 
+This app is deployed on Heroku! To experience the app for yourself, please go to https://gentle-bastion-76166.herokuapp.com/ and register.
+
 ## Screenshots
 
-<img src="public/images/AboutPage.jpg" width="200" height="400" />
-<img src="public/images/LoginPage.jpg" />
-<img src="public/images/ViewProfile.jpg" />
-<img src="public/images/NewNav.jpg" />
-<img src="public/images/NewMatches.jpg" />
-<img src="public/images/AwaitingConfirmation.jpg" />
-<img src="public/images/ConfirmedMatch.jpg" />
-<img src="public/images/ContactModal.jpg" />
-<img src="public/images/StickyNoteScrum.png" />
+<img src="public/images/AboutPage.jpg" width="200"  />
+<img src="public/images/LoginPage.jpg" width="200"  />
+<img src="public/images/ViewProfile.jpg" width="200"   />
+<img src="public/images/NewNav.jpg" width="200"  />
+<img src="public/images/NewMatches.jpg" width="200"  />
+<img src="public/images/AwaitingConfirmation.jpg" width="200" />
+<img src="public/images/ConfirmedMatch.jpg" width="200" />
+<img src="public/images/ContactModal.jpg" width="200" />
 
 ## Built With
 

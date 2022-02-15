@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 function CreateProfile(props) {
   const classes = useStyles();
-  const presenting = true;
+  const presenting = false;
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const history = useHistory();

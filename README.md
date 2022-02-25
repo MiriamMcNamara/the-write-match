@@ -51,6 +51,8 @@ There is a database.sql file to use to set up a database. After that once you fo
 
 ## Usage
 
+You can access the app here:  https://gentle-bastion-76166.herokuapp.com/ . Just go to the Registration Page from the homepage (Login Page) and register a username and password to walk through the app as a user!
+
 When the user lands on the homepage, they will be able to log into the app if they have already created a username and password, which will direct them to their profile page. If they have never logged in before, they can click on "Register," which will route them to the registration page.
 
 Once they have created their username and password, they will be directed to the Create Profile page, where they will enter information into several inputs before submitting. Once they have submitted, they will be routed to the View Profile page. From there, the user can go to either the New Matches or Current Matches pages.

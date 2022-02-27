@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Container from "@mui/material/Container";
@@ -24,8 +24,59 @@ function CreateProfile(props) {
   const presenting = false;
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const writer = useSelector((store) => store.writer);
+  const seeking = useSelector((store) => store.seeking);
+  const availableFor = useSelector((store) => store.availablefor);
   const history = useHistory();
   const [heading, setHeading] = useState("Create Your Write Match Profile!");
+
+  useEffect(() => {
+    scrollToTop();
+    checkReducer();
+  }, []);
+
+  const checkReducer = () => {
+    console.log("in checkReducer", writer, seeking, availableFor);
+    if (Object.entries(writer).length === 0) {
+      console.log("EMPTY");
+      return false;
+    } else {
+      setAddWriter({
+        ...addWriter,
+        name: writer[0].name,
+        image: writer[0].image,
+        bio: writer[0].bio,
+        wip: writer[0].wip,
+        genres: writer[0].genres,
+        contact: writer[0].contact,
+        seeking: seeking[0].seeking_id,
+        skill: availableFor[0].available_for_id,
+      });
+      // if( seeking[0].skill === 'accountability buddy'){
+      //   setAddWriter({
+      //     ...addWriter,
+      //     seeking: 3
+      //   })
+      // }
+      // if (
+      //   newtutorInfo.school === "Mayo High School" ||
+      //   newtutorInfo.school === "John Marshall High School" ||
+      //   newtutorInfo.school === "Century High School" ||
+      //   newtutorInfo.school === "Lourdes High School" ||
+      //   newtutorInfo.school === "Byron High School" ||
+      //   newtutorInfo.school === "Dover-Eyota High School" ||
+      //   newtutorInfo.school === "Stewertville High School" ||
+      //   newtutorInfo.school === "College"
+      // ) {
+      //   setdefaultSchoolVal(newtutorInfo.school);
+      //   setNewTutorSchool(newtutorInfo.school);
+      // }
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   //the hook that is set by the information entered by the user to create their profile
   const [addWriter, setAddWriter] = useState({

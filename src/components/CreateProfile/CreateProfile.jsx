@@ -331,30 +331,37 @@ function CreateProfile(props) {
               onChange={(event) => handleContact(event)}
             />
           </Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={6} padding="10px" marginBottom="10px">
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              onClick={postWriter}
-            >
-              SUBMIT PROFILE
-            </Button>
-          </Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={6} padding="10px" marginBottom="10px">
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              onClick={updateWriter}
-            >
-              UPDATE PROFILE
-            </Button>
-          </Grid>
-          <Grid item xs={3}></Grid>
+          {Object.entries(writer).length === 0 ? (
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={6} padding="10px" marginBottom="10px">
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  onClick={postWriter}
+                >
+                  SUBMIT PROFILE
+                </Button>
+              </Grid>
+              <Grid item xs={3}></Grid>{" "}
+            </Grid>
+          ) : (
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={6} padding="10px" marginBottom="10px">
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  onClick={updateWriter}
+                >
+                  UPDATE PROFILE
+                </Button>
+              </Grid>
+              <Grid item xs={3}></Grid>
+            </Grid>
+          )}
         </Grid>
       </Box>
     </Container>

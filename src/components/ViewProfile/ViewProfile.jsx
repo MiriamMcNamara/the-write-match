@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 //this is the landing page for all returning users
 
@@ -106,6 +107,21 @@ function ViewProfile(props) {
               </Grid>
             ))}
             <br />
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid
+                item
+                xs={6}
+                padding="10px"
+                marginBottom="10px"
+                marginLeft="20px"
+              >
+                <Button type="submit" color="primary" variant="contained">
+                  Edit Profile
+                </Button>
+              </Grid>
+              <Grid item xs={3}></Grid>
+            </Grid>
           </Box>
         </Grid>
       </Grid>

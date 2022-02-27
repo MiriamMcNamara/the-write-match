@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Container from "@mui/material/Container";
@@ -24,8 +24,44 @@ function CreateProfile(props) {
   const presenting = false;
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const writer = useSelector((store) => store.writer);
+  const seeking = useSelector((store) => store.seeking);
+  const availableFor = useSelector((store) => store.availablefor);
   const history = useHistory();
   const [heading, setHeading] = useState("Create Your Write Match Profile!");
+
+  useEffect(async () => {
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
+    scrollToTop();
+    await checkReducer();
+  }, []);
+
+  const checkReducer = () => {
+    console.log("in checkReducer", writer, seeking, availableFor);
+    if (Object.entries(writer).length === 0) {
+      console.log("EMPTY");
+      return false;
+    } else {
+      setAddWriter({
+        ...addWriter,
+        name: writer[0].name,
+        image: writer[0].image,
+        bio: writer[0].bio,
+        wip: writer[0].wip,
+        genres: writer[0].genres,
+        contact: writer[0].contact,
+        seeking: seeking[0].seeking_id,
+        skill: availableFor[0].available_for_id,
+      });
+      setHeading("Update Your Write Match Profile!");
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   //the hook that is set by the information entered by the user to create their profile
   const [addWriter, setAddWriter] = useState({
@@ -118,6 +154,50 @@ function CreateProfile(props) {
   const handleContact = (event) => {
     //input capture
     setAddWriter({ ...addWriter, contact: event.target.value });
+  };
+
+  const updateWriter = () => {
+    console.log("in updateWriter");
+    if (
+      addWriter.name &&
+      addWriter.image &&
+      addWriter.bio &&
+      addWriter.wip &&
+      addWriter.genres &&
+      addWriter.skill &&
+      addWriter.seeking &&
+      addWriter.contact
+    ) {
+      if (
+        addWriter.name != writer[0].name ||
+        addWriter.image != writer[0].image ||
+        addWriter.bio != writer[0].bio ||
+        addWriter.wip != writer[0].wip ||
+        addWriter.genres != writer[0].genres ||
+        addWriter.contact != writer[0].contact
+      ) {
+        dispatch({
+          type: "UPDATE_WRITER",
+          payload: addWriter,
+        });
+      }
+      if (addWriter.seeking !== seeking[0].seeking_id) {
+        dispatch({
+          type: "UPDATE_SEEKING",
+          payload: addWriter,
+        });
+      }
+      if (addWriter.skill !== availableFor[0].available_for_id) {
+        dispatch({
+          type: "UPDATE_AVAILABLE_FOR",
+          payload: addWriter,
+        });
+      }
+      history.push("/profile");
+    } //end if statement
+    else {
+      alert("All fields must be entered before proceeding");
+    }
   };
 
   return (
@@ -291,18 +371,37 @@ function CreateProfile(props) {
               onChange={(event) => handleContact(event)}
             />
           </Grid>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4} padding="10px" marginBottom="10px">
-            <Button
-              type="submit"
-              color="primary"
-              variant="contained"
-              onClick={postWriter}
-            >
-              SUBMIT
-            </Button>
-          </Grid>
-          <Grid item xs={4}></Grid>
+          {Object.entries(writer).length === 0 ? (
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={6} padding="10px" marginBottom="10px">
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  onClick={postWriter}
+                >
+                  SUBMIT PROFILE
+                </Button>
+              </Grid>
+              <Grid item xs={3}></Grid>{" "}
+            </Grid>
+          ) : (
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={6} padding="10px" marginBottom="10px">
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  onClick={updateWriter}
+                >
+                  UPDATE PROFILE
+                </Button>
+              </Grid>
+              <Grid item xs={3}></Grid>
+            </Grid>
+          )}
         </Grid>
       </Box>
     </Container>

@@ -1,9 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
 
-//This Saga came with the Prime Academy template.
-//I did not alter it in any way.
-
 // worker Saga: will be fired on "LOGIN" actions
 function* loginUser(action) {
   try {
@@ -56,6 +53,9 @@ function* logoutUser(action) {
     // remove the client-side user object to let
     // the client-side code know the user is logged out
     yield put({ type: "UNSET_USER" });
+    yield put({ type: "UNSET_WRITER" });
+    yield put({ type: "UNSET_SEEKING" });
+    yield put({ type: "UNSET_AVAILABLE_FOR" });
   } catch (error) {
     console.log("Error with user logout:", error);
   }

@@ -4,6 +4,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 //this is the landing page for all returning users
 
@@ -72,6 +74,15 @@ function ViewProfile(props) {
                   Genres:
                 </Typography>
                 <Typography textAlign="center">{writer.genres}</Typography>
+                <br />
+                <Typography
+                  textAlign="center"
+                  variant="subtitle1"
+                  fontStyle="italic"
+                >
+                  Contact:
+                </Typography>
+                <Typography textAlign="center">{writer.contact}</Typography>
               </Grid>
             ))}
 
@@ -105,7 +116,23 @@ function ViewProfile(props) {
                 <Typography textAlign="center">{seeking.skill}</Typography>
               </Grid>
             ))}
-            <br />
+            <Grid container>
+              <Grid item xs={3}></Grid>
+              <Grid
+                item
+                xs={6}
+                padding="10px"
+                marginBottom="10px"
+                marginLeft="20px"
+              >
+                <Link to="/createprofile">
+                  <Button type="submit" color="primary" variant="contained">
+                    Edit Profile
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item xs={3}></Grid>
+            </Grid>
           </Box>
         </Grid>
       </Grid>

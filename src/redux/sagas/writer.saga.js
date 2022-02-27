@@ -52,11 +52,53 @@ function* postWriter(action) {
   }
 }
 
+function* updateWriter(action) {
+  console.log("in updateWriter saga");
+  try {
+    const response = yield axios.put(
+      `/api/writer/${action.payload.user_id}`,
+      action.payload
+    );
+    yield put({ type: "FETCH_WRITER", payload: action.payload.user_id });
+  } catch (error) {
+    console.log("writer put request failed", error);
+  }
+}
+
+function* updateSeeking(action) {
+  console.log("in updateSeeking saga");
+  try {
+    const response = yield axios.put(
+      `/api/writer/seeking/${action.payload.user_id}`,
+      action.payload
+    );
+    yield put({ type: "FETCH_SEEKING", payload: action.payload.user_id });
+  } catch (error) {
+    console.log("seeking put request failed", error);
+  }
+}
+
+function* updateAvailableFor(action) {
+  console.log("in updateAvailableFor saga");
+  try {
+    const response = yield axios.put(
+      `/api/writer/availablefor/${action.payload.user_id}`,
+      action.payload
+    );
+    yield put({ type: "FETCH_AVAILABLE_FOR", payload: action.payload.user_id });
+  } catch (error) {
+    console.log("availablefor put request failed", error);
+  }
+}
+
 function* writerSaga() {
   yield takeLatest("FETCH_WRITER", fetchWriter);
   yield takeLatest("POST_WRITER", postWriter);
   yield takeLatest("FETCH_SEEKING", fetchSeeking);
   yield takeLatest("FETCH_AVAILABLE_FOR", fetchAvailableFor);
+  yield takeLatest("UPDATE_WRITER", updateWriter);
+  yield takeLatest("UPDATE_SEEKING", updateSeeking);
+  yield takeLatest("UPDATE_AVAILABLE_FOR", updateAvailableFor);
 }
 
 export default writerSaga;

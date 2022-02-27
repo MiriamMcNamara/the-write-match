@@ -52,11 +52,26 @@ function* postWriter(action) {
   }
 }
 
+function* updateWriter(action) {
+  console.log("in updateWriter saga");
+}
+
+function* updateSeeking(action) {
+  console.log("in updateSeeking saga");
+}
+
+function* updateAvailableFor(action) {
+  console.log("in updateAvailableFor saga");
+}
+
 function* writerSaga() {
   yield takeLatest("FETCH_WRITER", fetchWriter);
   yield takeLatest("POST_WRITER", postWriter);
   yield takeLatest("FETCH_SEEKING", fetchSeeking);
   yield takeLatest("FETCH_AVAILABLE_FOR", fetchAvailableFor);
+  yield takeLatest("UPDATE_WRITER", updateWriter);
+  yield takeLatest("UPDATE_SEEKING", updateSeeking);
+  yield takeLatest("UPDATE_AVAILABLE_FOR", updateAvailableFor);
 }
 
 export default writerSaga;

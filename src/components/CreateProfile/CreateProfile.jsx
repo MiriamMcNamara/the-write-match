@@ -158,6 +158,37 @@ function CreateProfile(props) {
 
   const updateWriter = () => {
     console.log("in updateWriter");
+    if (
+      addWriter.name &&
+      addWriter.image &&
+      addWriter.bio &&
+      addWriter.wip &&
+      addWriter.genres &&
+      addWriter.skill &&
+      addWriter.seeking &&
+      addWriter.contact
+    ) {
+      dispatch({
+        type: "UPDATE_WRITER",
+        payload: addWriter,
+      });
+      if (addWriter.seeking !== seeking[0].seeking_id) {
+        dispatch({
+          type: "UPDATE_SEEKING",
+          payload: addWriter.seeking,
+        });
+      }
+      if (addWriter.skill !== availableFor[0].available_for_id) {
+        dispatch({
+          type: "UPDATE_AVAILABLE_FOR",
+          payload: addWriter.skill,
+        });
+      }
+      history.push("/profile");
+    } //end if statement
+    else {
+      alert("All fields must be entered before proceeding");
+    }
   };
 
   return (

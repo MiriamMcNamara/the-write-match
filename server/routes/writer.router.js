@@ -61,6 +61,65 @@ WHERE user_id = ${req.params.id}`;
     });
 });
 
+//writer PUT route
+router.put("/:id", rejectUnauthenticated, (req, res) => {
+  console.log("put route req.body:", req.body);
+  // PUT route code here
+  const query = `UPDATE writer SET
+  name='${req.body.name}',
+  image='${req.body.image}',
+  bio='${req.body.bio}',
+  wip='${req.body.wip}',
+  contact='${req.body.contact}',
+  genres='${req.body.genres}'
+    WHERE id=${req.params.id}`;
+  pool
+    .query(query)
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+//seeking PUT route
+router.put("/seeking/:id", rejectUnauthenticated, (req, res) => {
+  console.log("seeking put route req.body:", req.body);
+  // PUT route code here
+  const query = `UPDATE writer_seeking SET
+  seeking_id=${req.body.seeking}
+    WHERE writer_id=${req.params.id}`;
+  pool
+    .query(query)
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+//availablefor PUT route
+router.put("/availablefor/:id", rejectUnauthenticated, (req, res) => {
+  console.log("seeking put route req.body:", req.body);
+  // PUT route code here
+  const query = `UPDATE writer_available_for SET
+  available_for_id=${req.body.skill}
+    WHERE writer_id=${req.params.id}`;
+  pool
+    .query(query)
+    .then((results) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 /**
  * POST route for creating a writer profile with inserts for seeking and available_for tables
  */

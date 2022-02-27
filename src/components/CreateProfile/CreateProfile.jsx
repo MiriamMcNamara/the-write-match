@@ -168,20 +168,29 @@ function CreateProfile(props) {
       addWriter.seeking &&
       addWriter.contact
     ) {
-      dispatch({
-        type: "UPDATE_WRITER",
-        payload: addWriter,
-      });
+      if (
+        addWriter.name != writer[0].name ||
+        addWriter.image != writer[0].image ||
+        addWriter.bio != writer[0].bio ||
+        addWriter.wip != writer[0].wip ||
+        addWriter.genres != writer[0].genres ||
+        addWriter.contact != writer[0].contact
+      ) {
+        dispatch({
+          type: "UPDATE_WRITER",
+          payload: addWriter,
+        });
+      }
       if (addWriter.seeking !== seeking[0].seeking_id) {
         dispatch({
           type: "UPDATE_SEEKING",
-          payload: addWriter.seeking,
+          payload: addWriter,
         });
       }
       if (addWriter.skill !== availableFor[0].available_for_id) {
         dispatch({
           type: "UPDATE_AVAILABLE_FOR",
-          payload: addWriter.skill,
+          payload: addWriter,
         });
       }
       history.push("/profile");

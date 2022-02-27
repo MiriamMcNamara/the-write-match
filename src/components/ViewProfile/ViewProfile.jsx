@@ -74,6 +74,15 @@ function ViewProfile(props) {
                   Genres:
                 </Typography>
                 <Typography textAlign="center">{writer.genres}</Typography>
+                <br />
+                <Typography
+                  textAlign="center"
+                  variant="subtitle1"
+                  fontStyle="italic"
+                >
+                  Contact:
+                </Typography>
+                <Typography textAlign="center">{writer.contact}</Typography>
               </Grid>
             ))}
 

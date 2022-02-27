@@ -20,7 +20,7 @@ Then covid and lockdown hit, and I, like so many other writers, was once again s
 
 'The Write Match' aims to help connect writers based on what they are looking for and what they have to offer each other. Users log in with a unique username and password, and then create a profile that includes their genres, what they are looking for, and what they have to offer. They are then matched with other writers. They can select matches, and if confirmed by the other user, they have the option to contact their match. They can also delete selected matches if they change their mind.
 
-This app is deployed on Heroku! To experience the app for yourself, please go to https://gentle-bastion-76166.herokuapp.com/ and register.
+This app is deployed on Heroku! To experience the app for yourself, please go to https://gentle-bastion-76166.herokuapp.com/ and register a username and password. Make sure you are viewing on a mobile browser.
 
 ## Screenshots
 

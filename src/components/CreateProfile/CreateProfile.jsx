@@ -30,9 +30,12 @@ function CreateProfile(props) {
   const history = useHistory();
   const [heading, setHeading] = useState("Create Your Write Match Profile!");
 
-  useEffect(() => {
+  useEffect(async () => {
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
     scrollToTop();
-    checkReducer();
+    await checkReducer();
   }, []);
 
   const checkReducer = () => {
@@ -52,25 +55,7 @@ function CreateProfile(props) {
         seeking: seeking[0].seeking_id,
         skill: availableFor[0].available_for_id,
       });
-      // if( seeking[0].skill === 'accountability buddy'){
-      //   setAddWriter({
-      //     ...addWriter,
-      //     seeking: 3
-      //   })
-      // }
-      // if (
-      //   newtutorInfo.school === "Mayo High School" ||
-      //   newtutorInfo.school === "John Marshall High School" ||
-      //   newtutorInfo.school === "Century High School" ||
-      //   newtutorInfo.school === "Lourdes High School" ||
-      //   newtutorInfo.school === "Byron High School" ||
-      //   newtutorInfo.school === "Dover-Eyota High School" ||
-      //   newtutorInfo.school === "Stewertville High School" ||
-      //   newtutorInfo.school === "College"
-      // ) {
-      //   setdefaultSchoolVal(newtutorInfo.school);
-      //   setNewTutorSchool(newtutorInfo.school);
-      // }
+      setHeading("Update Your Write Match Profile!");
     }
   };
 
@@ -169,6 +154,10 @@ function CreateProfile(props) {
   const handleContact = (event) => {
     //input capture
     setAddWriter({ ...addWriter, contact: event.target.value });
+  };
+
+  const updateWriter = () => {
+    console.log("in updateWriter");
   };
 
   return (
@@ -342,18 +331,30 @@ function CreateProfile(props) {
               onChange={(event) => handleContact(event)}
             />
           </Grid>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4} padding="10px" marginBottom="10px">
+          <Grid item xs={3}></Grid>
+          <Grid item xs={6} padding="10px" marginBottom="10px">
             <Button
               type="submit"
               color="primary"
               variant="contained"
               onClick={postWriter}
             >
-              SUBMIT
+              SUBMIT PROFILE
             </Button>
           </Grid>
-          <Grid item xs={4}></Grid>
+          <Grid item xs={3}></Grid>
+          <Grid item xs={3}></Grid>
+          <Grid item xs={6} padding="10px" marginBottom="10px">
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              onClick={updateWriter}
+            >
+              UPDATE PROFILE
+            </Button>
+          </Grid>
+          <Grid item xs={3}></Grid>
         </Grid>
       </Box>
     </Container>

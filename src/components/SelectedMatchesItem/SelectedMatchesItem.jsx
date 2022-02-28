@@ -24,6 +24,69 @@ function SelectedMatchesItem(props) {
   const availablefor = useSelector((store) => store.availablefor);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    //get all the user info to load onto the page, GET routes in writer.router
+    checkAvailableFor();
+    checkSeeking();
+  }, []);
+
+  const [lookingFor, setLookingFor] = useState("");
+  const [availableFor, setAvailableFor] = useState("");
+
+  const checkSeeking = () => {
+    if (props.selected.seeking_id === 1) {
+      setLookingFor("Developmental Editing Help");
+    }
+    if (props.selected.seeking_id === 2) {
+      setLookingFor("Copy/Line Editing Help");
+    }
+    if (props.selected.seeking_id === 3) {
+      setLookingFor("An Accountability Buddy");
+    }
+    if (props.selected.seeking_id === 4) {
+      setLookingFor("A Critique Group");
+    }
+    if (props.selected.seeking_id === 5) {
+      setLookingFor("Someone to Manuscript Swap With");
+    }
+    if (props.selected.seeking_id === 6) {
+      setLookingFor("World-Building Help");
+    }
+    if (props.selected.seeking_id === 7) {
+      setLookingFor("Publishing Strategy Help");
+    }
+    if (props.selected.seeking_id === 8) {
+      setLookingFor("Socializing and Community");
+    }
+  };
+
+  const checkAvailableFor = () => {
+    if (props.selected.available_for_id === 1) {
+      setAvailableFor("My Developmental Editing Expertise");
+    }
+    if (props.selected.available_for_id === 2) {
+      setAvailableFor("My Copy/Line Editing Skills");
+    }
+    if (props.selected.available_for_id === 3) {
+      setAvailableFor("An Accountability Buddy");
+    }
+    if (props.selected.available_for_id === 4) {
+      setAvailableFor("Being a Member of a Critique Group");
+    }
+    if (props.selected.available_for_id === 5) {
+      setAvailableFor("Trading Manscripts");
+    }
+    if (props.selected.available_for_id === 6) {
+      setAvailableFor("My World-Building Expertise");
+    }
+    if (props.selected.available_for_id === 7) {
+      setAvailableFor("Publishing Strategizing");
+    }
+    if (props.selected.available_for_id === 8) {
+      setAvailableFor("Socializing and Community");
+    }
+  };
+
   //the user can delete a selected match that is confirmed or awaiting
   //confirmation. We need to send all of this info in the payload because this
   //dispatch triggers the 'FILTER_MATCHES' saga to run again.
@@ -91,6 +154,20 @@ function SelectedMatchesItem(props) {
           </Typography>
           <Typography variant="body2" textAlign="center">
             {props.selected.genres}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I'm Looking For:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {lookingFor}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I Am Available For:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {availableFor}
           </Typography>
         </CardContent>
         <CardContent>
@@ -198,6 +275,20 @@ function SelectedMatchesItem(props) {
           </Typography>
           <Typography variant="body2" textAlign="center">
             {props.selected.genres}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I'm Looking For:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {lookingFor}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I Am Available For:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {availableFor}
           </Typography>
         </CardContent>
         <CardContent>

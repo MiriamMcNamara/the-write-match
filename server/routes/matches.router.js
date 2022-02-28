@@ -22,7 +22,10 @@ router.get("/existing/", rejectUnauthenticated, (req, res) => {
 
 //this is the GET route that selects writers based on algorithm for the user
 router.get("/", rejectUnauthenticated, (req, res) => {
-  const query = `SELECT DISTINCT writer.id, name, image, bio, wip, contact, genres FROM writer
+  const query = `SELECT DISTINCT writer.id, writer.name, writer.image, 
+  writer.bio, writer.wip, writer.contact, writer.genres,
+  writer_available_for.available_for_id, writer_seeking.seeking_id 
+  FROM writer
   JOIN writer_available_for ON writer.id = writer_available_for.writer_id
   JOIN writer_seeking ON writer.id = writer_seeking.writer_id
   WHERE writer.id != ${req.query.writer}

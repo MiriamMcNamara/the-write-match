@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 import CardMedia from "@mui/material/CardMedia";
@@ -16,6 +16,12 @@ function NewMatchesItem(props) {
   const availablefor = useSelector((store) => store.availablefor);
   const seeking = useSelector((store) => store.seeking);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    //get all the user info to load onto the page, GET routes in writer.router
+    checkAvailableFor();
+    checkSeeking();
+  }, []);
 
   //when the user clicks on the 'Match With this Writer!' button,
   //this function checks to see whether there is already a match that exists
@@ -42,9 +48,67 @@ function NewMatchesItem(props) {
     });
     window.scrollTo(0, 0); //added this for ease of presentation, not necessary here
   };
+  //availableFor hooks
+  const [lookingFor, setLookingFor] = useState("");
+  const [availableFor, setAvailableFor] = useState("");
+
+  const checkSeeking = () => {
+    if (props.match.available_for_id === 1) {
+      setLookingFor("Developmental Editing Help");
+    }
+    if (props.match.available_for_id === 2) {
+      setLookingFor("Copy/Line Editing Help");
+    }
+    if (props.match.available_for_id === 3) {
+      setLookingFor("An Accountability Buddy");
+    }
+    if (props.match.available_for_id === 4) {
+      setLookingFor("A Critique Group");
+    }
+    if (props.match.available_for_id === 5) {
+      setLookingFor("Someone to Manuscript Swap With");
+    }
+    if (props.match.available_for_id === 6) {
+      setLookingFor("World-Building Help");
+    }
+    if (props.match.available_for_id === 7) {
+      setLookingFor("Publishing Strategy Help");
+    }
+    if (props.match.available_for_id === 8) {
+      setLookingFor("Socializing and Community");
+    }
+  };
+
+  const checkAvailableFor = () => {
+    if (props.match.seeking_id === 1) {
+      setAvailableFor("My Developmental Editing Expertise");
+    }
+    if (props.match.seeking_id === 2) {
+      setAvailableFor("My Copy/Line Editing Skills");
+    }
+    if (props.match.seeking_id === 3) {
+      setAvailableFor("As An Accountability Buddy");
+    }
+    if (props.match.seeking_id === 4) {
+      setAvailableFor("Being a Member of a Critique Group");
+    }
+    if (props.match.seeking_id === 5) {
+      setAvailableFor("Trading Manscripts");
+    }
+    if (props.match.seeking_id === 6) {
+      setAvailableFor("My World-Building Expertise");
+    }
+    if (props.match.seeking_id === 7) {
+      setAvailableFor("Publishing Strategizing");
+    }
+    if (props.match.seeking_id === 8) {
+      setAvailableFor("Socializing and Community");
+    }
+  };
 
   return (
     <Grid item key={props.match.id}>
+      {JSON.stringify(props.match)}
       <Card
         elevation={2}
         sx={{ marginTop: "20px", border: 5, borderColor: "secondary.main" }}
@@ -77,6 +141,20 @@ function NewMatchesItem(props) {
           </Typography>
           <Typography variant="body2" textAlign="center">
             {props.match.genres}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I'm Seeking:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {lookingFor}
+          </Typography>
+          <br />
+          <Typography variant="body2" textAlign="center" fontStyle="italic">
+            What I'm Available For:
+          </Typography>
+          <Typography variant="body2" textAlign="center">
+            {availableFor}
           </Typography>
         </CardContent>
         <CardContent>

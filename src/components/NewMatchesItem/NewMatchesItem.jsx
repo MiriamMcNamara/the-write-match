@@ -53,62 +53,61 @@ function NewMatchesItem(props) {
   const [availableFor, setAvailableFor] = useState("");
 
   const checkSeeking = () => {
-    if (props.match.available_for_id === 1) {
+    if (props.match.seeking_id === 1) {
       setLookingFor("Developmental Editing Help");
     }
-    if (props.match.available_for_id === 2) {
+    if (props.match.seeking_id === 2) {
       setLookingFor("Copy/Line Editing Help");
     }
-    if (props.match.available_for_id === 3) {
+    if (props.match.seeking_id === 3) {
       setLookingFor("An Accountability Buddy");
     }
-    if (props.match.available_for_id === 4) {
+    if (props.match.seeking_id === 4) {
       setLookingFor("A Critique Group");
     }
-    if (props.match.available_for_id === 5) {
+    if (props.match.seeking_id === 5) {
       setLookingFor("Someone to Manuscript Swap With");
     }
-    if (props.match.available_for_id === 6) {
+    if (props.match.seeking_id === 6) {
       setLookingFor("World-Building Help");
     }
-    if (props.match.available_for_id === 7) {
+    if (props.match.seeking_id === 7) {
       setLookingFor("Publishing Strategy Help");
     }
-    if (props.match.available_for_id === 8) {
+    if (props.match.seeking_id === 8) {
       setLookingFor("Socializing and Community");
     }
   };
 
   const checkAvailableFor = () => {
-    if (props.match.seeking_id === 1) {
+    if (props.match.available_for_id === 1) {
       setAvailableFor("My Developmental Editing Expertise");
     }
-    if (props.match.seeking_id === 2) {
+    if (props.match.available_for_id === 2) {
       setAvailableFor("My Copy/Line Editing Skills");
     }
-    if (props.match.seeking_id === 3) {
-      setAvailableFor("As An Accountability Buddy");
+    if (props.match.available_for_id === 3) {
+      setAvailableFor("An Accountability Buddy");
     }
-    if (props.match.seeking_id === 4) {
+    if (props.match.available_for_id === 4) {
       setAvailableFor("Being a Member of a Critique Group");
     }
-    if (props.match.seeking_id === 5) {
+    if (props.match.available_for_id === 5) {
       setAvailableFor("Trading Manscripts");
     }
-    if (props.match.seeking_id === 6) {
+    if (props.match.available_for_id === 6) {
       setAvailableFor("My World-Building Expertise");
     }
-    if (props.match.seeking_id === 7) {
+    if (props.match.available_for_id === 7) {
       setAvailableFor("Publishing Strategizing");
     }
-    if (props.match.seeking_id === 8) {
+    if (props.match.available_for_id === 8) {
       setAvailableFor("Socializing and Community");
     }
   };
 
   return (
     <Grid item key={props.match.id}>
-      {JSON.stringify(props.match)}
       <Card
         elevation={2}
         sx={{ marginTop: "20px", border: 5, borderColor: "secondary.main" }}

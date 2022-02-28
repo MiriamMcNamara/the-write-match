@@ -159,7 +159,7 @@ function NewMatchesItem(props) {
         <CardContent>
           <Grid container>
             <Grid item xs={2}></Grid>
-            <Grid item xs={8}>
+            <Grid item xs={8} paddingLeft="20px">
               <Button
                 variant="contained"
                 color="secondary"

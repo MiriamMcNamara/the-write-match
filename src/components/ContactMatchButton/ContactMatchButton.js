@@ -7,6 +7,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 
 // Basic functional component structure for React with default state
 // value setup. When making a new component be sure to replace the
@@ -16,6 +18,14 @@ function ContactMatchButton(props) {
   // a default value of 'Functional Component'
   const store = useSelector((store) => store);
   const [heading, setHeading] = useState("Email Modal");
+
+  const [addText, setAddText] = useState("");
+
+  const handleText = (event) => {
+    //input capture
+    setAddText(event.target.value);
+    console.log("setAddText:", event.target.value);
+  };
 
   const [open, setOpen] = React.useState(false);
 
@@ -28,15 +38,17 @@ function ContactMatchButton(props) {
   };
 
   return (
-    <div>
-      <Button
-        variant="contained"
-        color="secondary"
-        gutterBottom
-        onClick={handleClickOpen}
-      >
-        Contact This Writer!
-      </Button>
+    <Grid container>
+      <Grid item>
+        <Button
+          variant="contained"
+          color="secondary"
+          gutterBottom
+          onClick={handleClickOpen}
+        >
+          Contact This Writer!
+        </Button>
+      </Grid>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -48,15 +60,22 @@ function ContactMatchButton(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText textAlign="center" id="alert-dialog-description">
-            Here's how {props.selected.name} would like for you to get in touch:
+            Type a message for {props.selected.name} below. We will send the
+            message directly to their email.
             <br />
             <br />
-            <Typography textAlign="center" variant="h6" fontStyle="italic">
-              "{props.selected.contact}"
-            </Typography>
+            <TextField
+              multiline
+              rows={4}
+              fullWidth
+              onChange={(event) => handleText(event)}
+            ></TextField>
             <br />
-            We recommend referencing The Write Match in your conversation, email
-            or DM title/intro so they know it's you.
+            We recommend referencing The Write Match in your email so they know
+            it's you. If you would like to take the convo outside of The Write
+            Match, feel free to send your contact info in the email. Otherwise,
+            you can both now send emails to each other via The Write Match by
+            clicking the "Contact This Writer!" button at any time.
             <br />
             <br />
             <Typography textAlign="center" variant="h5" fontStyle="italic">
@@ -70,7 +89,7 @@ function ContactMatchButton(props) {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Grid>
   );
 }
 

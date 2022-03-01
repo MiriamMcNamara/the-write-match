@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -16,15 +16,24 @@ import Grid from "@mui/material/Grid";
 function ContactMatchButton(props) {
   // Using hooks we're creating local state for a "heading" variable with
   // a default value of 'Functional Component'
-  const store = useSelector((store) => store);
-  const [heading, setHeading] = useState("Email Modal");
 
-  const [addText, setAddText] = useState("");
+  const dispatch = useDispatch();
+
+  const [addEmail, setAddEmail] = useState({
+    emailContent: "",
+    emailAddress: props.selected.contact,
+  });
+
+  //onClick, send addText, props.selected.contact in a dispatch to new saga?
+
+  const sendEmail = () => {
+    dispatch({ type: "SEND_EMAIL", payload: addEmail });
+    setOpen(false);
+  };
 
   const handleText = (event) => {
     //input capture
-    setAddText(event.target.value);
-    console.log("setAddText:", event.target.value);
+    setAddEmail({ ...addEmail, emailContent: event.target.value });
   };
 
   const [open, setOpen] = React.useState(false);
@@ -60,9 +69,10 @@ function ContactMatchButton(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText textAlign="center" id="alert-dialog-description">
-            Type a message for {props.selected.name} below. We will send the
-            message directly to their email.
-            <br />
+            <Typography variant="body2">
+              Type a message for {props.selected.name} below. We will send the
+              message directly to their email.
+            </Typography>
             <br />
             <TextField
               multiline
@@ -71,12 +81,15 @@ function ContactMatchButton(props) {
               onChange={(event) => handleText(event)}
             ></TextField>
             <br />
-            We recommend referencing The Write Match in your email so they know
-            it's you. If you would like to take the convo outside of The Write
-            Match, feel free to send your contact info in the email. Otherwise,
-            you can both now send emails to each other via The Write Match by
-            clicking the "Contact This Writer!" button at any time.
             <br />
+            <Typography variant="body2" fontStyle="italic">
+              We recommend referencing The Write Match in your email so they
+              know it's you. If you would like to take the convo outside of The
+              Write Match, feel free to send along your contact info. Otherwise,
+              you can both now send emails to each other via The Write Match by
+              clicking the "Contact This Writer!" button at any time while
+              keeping your contact informatin private!
+            </Typography>
             <br />
             <Typography textAlign="center" variant="h5" fontStyle="italic">
               🎉 Happy Connecting! 🎉
@@ -84,7 +97,15 @@ function ContactMatchButton(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus>
+          <Button
+            onClick={sendEmail}
+            autoFocus
+            color="primary"
+            variant="contained"
+          >
+            Send Email
+          </Button>
+          <Button onClick={handleClose} autoFocus variant="outlined">
             Close
           </Button>
         </DialogActions>

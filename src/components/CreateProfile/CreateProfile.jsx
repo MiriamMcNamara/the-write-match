@@ -359,9 +359,12 @@ function CreateProfile(props) {
 
           <Grid item xs={12} padding="10px">
             <Typography marginBottom="10px">
-              In the event of a Match, how would you like other writers to
-              contact you?
+              In the event of a Match, the other writer will be able to email
+              you through The Write Match! (We will keep your email address
+              private, don't worry) Please enter a valid email address so that
+              you can recieve messages through the app.
             </Typography>
+            <br />
             <TextField
               value={addWriter.contact}
               label="Contact Info"

@@ -6,11 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
+import ContactMatchButton from "../ContactMatchButton/ContactMatchButton";
 
 //this component creates an item for each match that the SelectedMatchesList
 //pulls from the selected reducer and displays it on the DOM.
@@ -104,18 +100,6 @@ function SelectedMatchesItem(props) {
     window.scrollTo(0, 0);
   };
 
-  //the next three hooks are related to the modal that pops up when the user clicks
-  //'Contact This Writer!'
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return props.selected.confirmed ? (
     <Grid item key={props.selected.id}>
       <Card
@@ -174,52 +158,12 @@ function SelectedMatchesItem(props) {
           <Grid container>
             <Grid item xs={2}></Grid>
             <Grid item xs={8} paddingLeft="20px">
-              <Button
-                variant="contained"
-                color="secondary"
-                gutterBottom
-                onClick={handleClickOpen}
-              >
-                Contact This Writer!
-              </Button>
+              <ContactMatchButton selected={props.selected} />
             </Grid>
             <Grid item xs={2}></Grid>
           </Grid>
         </CardContent>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title" textAlign="center">
-            {"Congrats on matching with another awesome creative!"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText textAlign="center" id="alert-dialog-description">
-              Here's how {props.selected.name} would like for you to get in
-              touch:
-              <br />
-              <br />
-              <Typography textAlign="center" variant="h6" fontStyle="italic">
-                "{props.selected.contact}"
-              </Typography>
-              <br />
-              We recommend referencing The Write Match in your conversation,
-              email or DM title/intro so they know it's you.
-              <br />
-              <br />
-              <Typography textAlign="center" variant="h5" fontStyle="italic">
-                🎉 Happy Connecting! 🎉
-              </Typography>
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} autoFocus>
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
+
         <CardContent>
           <Grid container>
             <Grid item xs={2}></Grid>

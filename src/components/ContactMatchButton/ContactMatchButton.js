@@ -18,10 +18,13 @@ function ContactMatchButton(props) {
   // a default value of 'Functional Component'
 
   const dispatch = useDispatch();
+  const writer = useSelector((store) => store.writer);
 
   const [addEmail, setAddEmail] = useState({
     emailContent: "",
     emailAddress: props.selected.contact,
+    emailToName: props.selected.name,
+    emailFromName: writer[0].name,
   });
 
   //onClick, send addText, props.selected.contact in a dispatch to new saga?

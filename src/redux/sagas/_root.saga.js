@@ -1,9 +1,10 @@
-import { all } from 'redux-saga/effects';
-import loginSaga from './login.saga';
-import registrationSaga from './registration.saga';
-import userSaga from './user.saga';
-import writerSaga from './writer.saga';
-import matchesSaga from './matches.saga'
+import { all } from "redux-saga/effects";
+import loginSaga from "./login.saga";
+import registrationSaga from "./registration.saga";
+import userSaga from "./user.saga";
+import writerSaga from "./writer.saga";
+import matchesSaga from "./matches.saga";
+import emailSaga from "./email.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -14,10 +15,11 @@ import matchesSaga from './matches.saga'
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(), 
+    loginSaga(),
     registrationSaga(),
     userSaga(),
     writerSaga(),
-    matchesSaga()
+    matchesSaga(),
+    emailSaga(),
   ]);
 }

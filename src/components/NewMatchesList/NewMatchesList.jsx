@@ -21,9 +21,9 @@ function NewMatchesList(props) {
 
   useEffect(() => {
     //don't think I need these here but not ready to delete them yet
-    // dispatch({ type: "FETCH_WRITER", payload: user.id });
-    // dispatch({ type: "FETCH_SEEKING", payload: user.id });
-    // dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
     dispatch({
       //this dispatch triggers a Saga that gets all the potential matches
       //for the user and compares them with the matches that already exist.

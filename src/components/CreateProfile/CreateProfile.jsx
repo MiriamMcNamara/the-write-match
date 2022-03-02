@@ -179,18 +179,21 @@ function CreateProfile(props) {
         dispatch({
           type: "UPDATE_WRITER",
           payload: addWriter,
+          writer_id: writer[0].id,
         });
       }
       if (addWriter.seeking !== seeking[0].seeking_id) {
         dispatch({
           type: "UPDATE_SEEKING",
           payload: addWriter,
+          writer_id: writer[0].id,
         });
       }
       if (addWriter.skill !== availableFor[0].available_for_id) {
         dispatch({
           type: "UPDATE_AVAILABLE_FOR",
           payload: addWriter,
+          writer_id: writer[0].id,
         });
       }
       history.push("/profile");

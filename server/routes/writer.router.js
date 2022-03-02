@@ -64,6 +64,7 @@ WHERE user_id = ${req.params.id}`;
 //writer PUT route
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   console.log("put route req.body:", req.body);
+  console.log("req.params", req.params);
   // PUT route code here
   const query = `UPDATE writer SET
   name='${req.body.name}',

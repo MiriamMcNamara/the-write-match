@@ -53,10 +53,10 @@ function* postWriter(action) {
 }
 
 function* updateWriter(action) {
-  console.log("in updateWriter saga");
+  console.log("in updateWriter saga", action);
   try {
     const response = yield axios.put(
-      `/api/writer/${action.payload.user_id}`,
+      `/api/writer/${action.writer_id}`,
       action.payload
     );
     yield put({ type: "FETCH_WRITER", payload: action.payload.user_id });
@@ -69,7 +69,7 @@ function* updateSeeking(action) {
   console.log("in updateSeeking saga");
   try {
     const response = yield axios.put(
-      `/api/writer/seeking/${action.payload.user_id}`,
+      `/api/writer/seeking/${action.writer_id}`,
       action.payload
     );
     yield put({ type: "FETCH_SEEKING", payload: action.payload.user_id });
@@ -82,7 +82,7 @@ function* updateAvailableFor(action) {
   console.log("in updateAvailableFor saga");
   try {
     const response = yield axios.put(
-      `/api/writer/availablefor/${action.payload.user_id}`,
+      `/api/writer/availablefor/${action.writer_id}`,
       action.payload
     );
     yield put({ type: "FETCH_AVAILABLE_FOR", payload: action.payload.user_id });

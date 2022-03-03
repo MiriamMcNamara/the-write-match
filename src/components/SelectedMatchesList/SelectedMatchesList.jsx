@@ -20,9 +20,9 @@ function SelectedMatchesList(props) {
 
   useEffect(() => {
     //I don't think I need these, but not ready to delete yet
-    // dispatch({ type: "FETCH_WRITER", payload: user.id });
-    // dispatch({ type: "FETCH_SEEKING", payload: user.id });
-    // dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
+    dispatch({ type: "FETCH_WRITER", payload: user.id });
+    dispatch({ type: "FETCH_SEEKING", payload: user.id });
+    dispatch({ type: "FETCH_AVAILABLE_FOR", payload: user.id });
     dispatch({
       //this dispatch triggers a Saga that gets all the potential matches and selected matches
       //for the user. The filtering is used for the NewMatchesList, but the GET route for the

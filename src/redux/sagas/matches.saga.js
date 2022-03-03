@@ -1,4 +1,5 @@
 import axios from "axios";
+import { array } from "prop-types";
 import { put, takeLatest } from "redux-saga/effects";
 
 function* filterMatches(action) {
@@ -18,6 +19,7 @@ function* filterMatches(action) {
       console.log(selected.data);
       //create an empty array
       let matchesArray = [];
+      let selectedArray = [];
       // if the selected array is NOT empty, run a loop within a loop that checks
       //each object in the matches array against the objects in the selected array
       if (selected.data.length > 0) {
@@ -25,7 +27,13 @@ function* filterMatches(action) {
           //create a boolean set to false
           let hasMatches = false;
           for (let j = 0; j < selected.data.length; j++) {
-            if (matches.data[i].id == selected.data[j].approver_id) {
+            if (
+              matches.data[i].id === selected.data[j].initiator_id &&
+              selected.data[j].confirmed === false
+            ) {
+              //remove this match from the selected array
+              selected.data.splice(j, 1);
+            } else if (matches.data[i].id === selected.data[j].approver_id) {
               //if the potential match has already approved a match initiated by the user,
               //flip the boolean to true
               hasMatches = true;
@@ -40,8 +48,8 @@ function* filterMatches(action) {
             else if (
               //if the potential match has initiated a match with the user,
               //and the match has already been confirmed by the user, flip the boolean to true
-              matches.data[i].id == selected.data[j].initiator_id &&
-              selected.data[j].confirmed == true
+              matches.data[i].id === selected.data[j].initiator_id &&
+              selected.data[j].confirmed === true
             ) {
               hasMatches = true;
               console.log(
@@ -66,7 +74,7 @@ function* filterMatches(action) {
           } //end j loop
           //if the boolean has not been flipped by either of these cases,
           //push the match into the matchesArray
-          if (hasMatches == false) {
+          if (hasMatches === false) {
             matchesArray.push(matches.data[i]);
           }
         } //end i loop

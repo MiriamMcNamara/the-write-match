@@ -29,7 +29,7 @@ This app is deployed on Heroku! To experience the app for yourself, please go to
 <img src="public/images/NewNav.jpg" width="200"  />
 <img src="public/images/NewMatch.png" width="200"  />
 <img src="public/images/AwaitingConfirmation.jpg" width="200" />
-<img src="public/images/ContactThisWriter.jpg" width="200" />
+<img src="public/images/ContactThisWriter.png" width="200" />
 <img src="public/images/ContactModal.png" width="200" />
 
 ## Built With
